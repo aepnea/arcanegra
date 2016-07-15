@@ -1,0 +1,28 @@
+default: &default
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: arcanegra_dev
+  username: root
+  password: "root"
+
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: arcanegra_test
+  pool: 5
+  username: root
+  password: "root"
+
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: arcanegra
+  pool: 5
+  username: root
+  password: "root"
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
