@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Artist</th>
       <th>Firstname</th>
       <th>Lastname</th>
       <th>Short description</th>
@@ -24,7 +23,6 @@
   <tbody>
     <% @artists.each do |artist| %>
       <tr>
-        <td><%= artist.artist_id %></td>
         <td><%= artist.firstname %></td>
         <td><%= artist.lastname %></td>
         <td><%= artist.short_description %></td>
@@ -32,8 +30,8 @@
         <td><%= artist.email %></td>
         <td><%= artist.web %></td>
         <td><%= artist.address %></td>
-        <td><%= artist.city_id %></td>
-        <td><%= artist.state_id %></td>
+        <td><%= artist.city %></td>
+        <td><%= artist.state %></td>
         <td><%= artist.country %></td>
         <td><%= artist.phone %></td>
         <td><%= link_to 'Show', artist %></td>

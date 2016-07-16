@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_type_id: 
+  artist_id: 
+  name: MyString
+  short_description: MyString
+  description: MyText
+  on_sale: false
+  price: 1
+
+two:
+  product_type_id: 
+  artist_id: 
+  name: MyString
+  short_description: MyString
+  description: MyText
+  on_sale: false
+  price: 1

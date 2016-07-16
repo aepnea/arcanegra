@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  artist_id: 1
   firstname: MyString
   lastname: MyString
   short_description: MyString
@@ -9,13 +8,12 @@ one:
   email: MyString
   web: MyString
   address: MyString
-  city_id: 1
-  state_id: 1
+  city_id: 
+  state_id: 
   country: MyString
   phone: MyString
 
 two:
-  artist_id: 1
   firstname: MyString
   lastname: MyString
   short_description: MyString
@@ -23,7 +21,7 @@ two:
   email: MyString
   web: MyString
   address: MyString
-  city_id: 1
-  state_id: 1
+  city_id: 
+  state_id: 
   country: MyString
   phone: MyString

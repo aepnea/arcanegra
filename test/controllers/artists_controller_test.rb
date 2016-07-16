@@ -18,7 +18,7 @@ class ArtistsControllerTest < ActionController::TestCase
 
   test "should create artist" do
     assert_difference('Artist.count') do
-      post :create, artist: { address: @artist.address, artist_id: @artist.artist_id, city_id: @artist.city_id, country: @artist.country, description: @artist.description, email: @artist.email, firstname: @artist.firstname, lastname: @artist.lastname, phone: @artist.phone, short_description: @artist.short_description, state_id: @artist.state_id, web: @artist.web }
+      post :create, artist: { address: @artist.address, city_id: @artist.city_id, country: @artist.country, description: @artist.description, email: @artist.email, firstname: @artist.firstname, lastname: @artist.lastname, phone: @artist.phone, short_description: @artist.short_description, state_id: @artist.state_id, web: @artist.web }
     end
 
     assert_redirected_to artist_path(assigns(:artist))
@@ -35,7 +35,7 @@ class ArtistsControllerTest < ActionController::TestCase
   end
 
   test "should update artist" do
-    patch :update, id: @artist, artist: { address: @artist.address, artist_id: @artist.artist_id, city_id: @artist.city_id, country: @artist.country, description: @artist.description, email: @artist.email, firstname: @artist.firstname, lastname: @artist.lastname, phone: @artist.phone, short_description: @artist.short_description, state_id: @artist.state_id, web: @artist.web }
+    patch :update, id: @artist, artist: { address: @artist.address, city_id: @artist.city_id, country: @artist.country, description: @artist.description, email: @artist.email, firstname: @artist.firstname, lastname: @artist.lastname, phone: @artist.phone, short_description: @artist.short_description, state_id: @artist.state_id, web: @artist.web }
     assert_redirected_to artist_path(assigns(:artist))
   end
 

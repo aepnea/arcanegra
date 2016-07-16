@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Article</th>
       <th>Artist</th>
       <th>Product</th>
       <th>Tittle</th>
@@ -19,9 +18,8 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.article_id %></td>
-        <td><%= article.artist_id %></td>
-        <td><%= article.product_id %></td>
+        <td><%= article.artist %></td>
+        <td><%= article.product %></td>
         <td><%= article.tittle %></td>
         <td><%= article.description %></td>
         <td><%= article.text %></td>

@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>City:</strong>
-  <%= @city.city_id %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @city.name %>
 </p>
 
 <p>
   <strong>State:</strong>
-  <%= @city.state_id %>
+  <%= @city.state %>
 </p>
 
 <%= link_to 'Edit', edit_city_path(@city) %> |
