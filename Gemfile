@@ -50,5 +50,8 @@ gem 'mysql2'
 
 #### DEVISE
 gem 'devise'
+
+#### ROLIFY
+gem 'rolify'
 end
 
