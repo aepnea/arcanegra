@@ -47,5 +47,8 @@ group :development do
 #### mysql
 
 gem 'mysql2'
+
+#### DEVISE
+gem 'devise'
 end
 
