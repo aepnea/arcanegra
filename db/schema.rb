@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717200005) do
+ActiveRecord::Schema.define(version: 20160717202153) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -138,6 +138,45 @@ ActiveRecord::Schema.define(version: 20160717200005) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "status",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id",           limit: 4
+    t.integer  "customer_id",       limit: 4
+    t.integer  "order_status_id",   limit: 4
+    t.integer  "payment_status_id", limit: 4
+    t.integer  "payment_type_id",   limit: 4
+    t.integer  "address_id",        limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
+  add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
+  add_index "orders", ["payment_status_id"], name: "index_orders_on_payment_status_id", using: :btree
+  add_index "orders", ["payment_type_id"], name: "index_orders_on_payment_type_id", using: :btree
+
+  create_table "payment_statuses", force: :cascade do |t|
+    t.string   "status",          limit: 255
+    t.integer  "payment_type_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "payment_statuses", ["payment_type_id"], name: "index_payment_statuses_on_payment_type_id", using: :btree
+
+  create_table "payment_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "product_groups", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "short_description", limit: 255
@@ -191,6 +230,20 @@ ActiveRecord::Schema.define(version: 20160717200005) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "wire_transfers", force: :cascade do |t|
+    t.string   "bank",            limit: 255
+    t.string   "titular_account", limit: 255
+    t.string   "account",         limit: 255
+    t.string   "account_type",    limit: 255
+    t.string   "rut",             limit: 255
+    t.string   "email",           limit: 255
+    t.integer  "payment_type_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "wire_transfers", ["payment_type_id"], name: "index_wire_transfers_on_payment_type_id", using: :btree
+
   add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "customers"
   add_foreign_key "addresses", "states"
@@ -206,8 +259,16 @@ ActiveRecord::Schema.define(version: 20160717200005) do
   add_foreign_key "carts", "state_carts"
   add_foreign_key "cities", "states"
   add_foreign_key "customers", "customer_groups"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "order_statuses"
+  add_foreign_key "orders", "payment_statuses"
+  add_foreign_key "orders", "payment_types"
+  add_foreign_key "payment_statuses", "payment_types"
   add_foreign_key "product_product_groups", "product_groups"
   add_foreign_key "product_product_groups", "products"
   add_foreign_key "products", "artists"
   add_foreign_key "products", "product_types"
+  add_foreign_key "wire_transfers", "payment_types"
 end

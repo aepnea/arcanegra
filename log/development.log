@@ -1323,3 +1323,425 @@ WHERE fk.referenced_column_name is not null
   AND fk.table_name = 'states'
 [0m
   [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `states`
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (7.2ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateProductTypes (20160717042138)
+  [1m[35m (4.3ms)[0m  CREATE TABLE `product_types` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717042138')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateStates (20160717042219)
+  [1m[35m (4.5ms)[0m  CREATE TABLE `states` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717042219')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCities (20160717042230)
+  [1m[35m (4.7ms)[0m  CREATE TABLE `cities` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `state_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_cities_on_state_id`  (`state_id`) ) ENGINE=InnoDB
+  [1m[36m (9.0ms)[0m  [1mALTER TABLE `cities` ADD CONSTRAINT `fk_rails_59b5e22e07`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717042230')[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to CreateArtists (20160717042244)
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE `artists` (`id` int(11) auto_increment PRIMARY KEY, `firstname` varchar(255), `lastname` varchar(255), `short_description` varchar(255), `description` text, `email` varchar(255), `web` varchar(255), `address` varchar(255), `city_id` int(11), `state_id` int(11), `country` varchar(255), `phone` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_artists_on_city_id`  (`city_id`) ,  INDEX `index_artists_on_state_id`  (`state_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (11.6ms)[0m  ALTER TABLE `artists` ADD CONSTRAINT `fk_rails_3012537369`
+FOREIGN KEY (`city_id`)
+  REFERENCES `cities` (`id`)
+
+  [1m[36m (11.7ms)[0m  [1mALTER TABLE `artists` ADD CONSTRAINT `fk_rails_734c912cc9`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717042244')[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to CreateProducts (20160717042305)
+  [1m[36m (5.6ms)[0m  [1mCREATE TABLE `products` (`id` int(11) auto_increment PRIMARY KEY, `product_type_id` int(11), `artist_id` int(11), `name` varchar(255), `short_description` varchar(255), `description` text, `on_sale` tinyint(1), `price` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_product_type_id`  (`product_type_id`) ,  INDEX `index_products_on_artist_id`  (`artist_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (9.2ms)[0m  ALTER TABLE `products` ADD CONSTRAINT `fk_rails_8464b8e5d7`
+FOREIGN KEY (`product_type_id`)
+  REFERENCES `product_types` (`id`)
+
+  [1m[36m (9.6ms)[0m  [1mALTER TABLE `products` ADD CONSTRAINT `fk_rails_36cb1a30ab`
+FOREIGN KEY (`artist_id`)
+  REFERENCES `artists` (`id`)
+[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717042305')[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to CreateArticles (20160717042315)
+  [1m[36m (6.1ms)[0m  [1mCREATE TABLE `articles` (`id` int(11) auto_increment PRIMARY KEY, `artist_id` int(11), `product_id` int(11), `tittle` varchar(255), `description` varchar(255), `text` text, `enable` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_articles_on_artist_id`  (`artist_id`) ,  INDEX `index_articles_on_product_id`  (`product_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (10.1ms)[0m  ALTER TABLE `articles` ADD CONSTRAINT `fk_rails_0698140869`
+FOREIGN KEY (`artist_id`)
+  REFERENCES `artists` (`id`)
+
+  [1m[36m (13.0ms)[0m  [1mALTER TABLE `articles` ADD CONSTRAINT `fk_rails_8d39306875`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717042315')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to DeviseCreateCustomers (20160717043317)
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE `customers` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX `index_customers_on_email`  ON `customers` (`email`) 
+  [1m[36m (4.7ms)[0m  [1mCREATE UNIQUE INDEX `index_customers_on_reset_password_token`  ON `customers` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717043317')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to DeviseCreateAdmins (20160717043327)
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE `admins` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (4.4ms)[0m  CREATE UNIQUE INDEX `index_admins_on_email`  ON `admins` (`email`) 
+  [1m[36m (4.7ms)[0m  [1mCREATE UNIQUE INDEX `index_admins_on_reset_password_token`  ON `admins` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717043327')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateCustomerGroups (20160717183417)
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE `customer_groups` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717183417')[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to AddCustomerGroupToCustomer (20160717184833)
+  [1m[36m (8.2ms)[0m  [1mALTER TABLE `customers` ADD `customer_group_id` int(11)[0m
+  [1m[35m (5.9ms)[0m  CREATE  INDEX `index_customers_on_customer_group_id`  ON `customers` (`customer_group_id`) 
+  [1m[36m (10.1ms)[0m  [1mALTER TABLE `customers` ADD CONSTRAINT `fk_rails_94ea3eb813`
+FOREIGN KEY (`customer_group_id`)
+  REFERENCES `customer_groups` (`id`)
+[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717184833')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateAddresses (20160717185858)
+  [1m[36m (5.1ms)[0m  [1mCREATE TABLE `addresses` (`id` int(11) auto_increment PRIMARY KEY, `customer_id` int(11), `city_id` int(11), `state_id` int(11), `address` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_addresses_on_customer_id`  (`customer_id`) ,  INDEX `index_addresses_on_city_id`  (`city_id`) ,  INDEX `index_addresses_on_state_id`  (`state_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (12.6ms)[0m  ALTER TABLE `addresses` ADD CONSTRAINT `fk_rails_d5f9efddd3`
+FOREIGN KEY (`customer_id`)
+  REFERENCES `customers` (`id`)
+
+  [1m[36m (9.5ms)[0m  [1mALTER TABLE `addresses` ADD CONSTRAINT `fk_rails_ab048f757c`
+FOREIGN KEY (`city_id`)
+  REFERENCES `cities` (`id`)
+[0m
+  [1m[35m (10.3ms)[0m  ALTER TABLE `addresses` ADD CONSTRAINT `fk_rails_2d87b6c11e`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717185858')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProductGroups (20160717195436)
+  [1m[35m (4.6ms)[0m  CREATE TABLE `product_groups` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `short_description` varchar(255), `description` text, `on_sale` tinyint(1), `price` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717195436')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateArtistProcuctGroups (20160717195505)
+  [1m[35m (5.4ms)[0m  CREATE TABLE `artist_procuct_groups` (`id` int(11) auto_increment PRIMARY KEY, `product_group_id` int(11), `article_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_artist_procuct_groups_on_product_group_id`  (`product_group_id`) ,  INDEX `index_artist_procuct_groups_on_article_id`  (`article_id`) ) ENGINE=InnoDB
+  [1m[36m (11.5ms)[0m  [1mALTER TABLE `artist_procuct_groups` ADD CONSTRAINT `fk_rails_728e935fae`
+FOREIGN KEY (`product_group_id`)
+  REFERENCES `product_groups` (`id`)
+[0m
+  [1m[35m (14.0ms)[0m  ALTER TABLE `artist_procuct_groups` ADD CONSTRAINT `fk_rails_fda1dd53f3`
+FOREIGN KEY (`article_id`)
+  REFERENCES `articles` (`id`)
+
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717195505')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProductProductGroups (20160717195517)
+  [1m[35m (5.6ms)[0m  CREATE TABLE `product_product_groups` (`id` int(11) auto_increment PRIMARY KEY, `product_id` int(11), `product_group_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_product_product_groups_on_product_id`  (`product_id`) ,  INDEX `index_product_product_groups_on_product_group_id`  (`product_group_id`) ) ENGINE=InnoDB
+  [1m[36m (12.4ms)[0m  [1mALTER TABLE `product_product_groups` ADD CONSTRAINT `fk_rails_7d5912906c`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (12.5ms)[0m  ALTER TABLE `product_product_groups` ADD CONSTRAINT `fk_rails_5a9ba79cb0`
+FOREIGN KEY (`product_group_id`)
+  REFERENCES `product_groups` (`id`)
+
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717195517')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateStateCarts (20160717195828)
+  [1m[35m (4.7ms)[0m  CREATE TABLE `state_carts` (`id` int(11) auto_increment PRIMARY KEY, `state` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717195828')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCarts (20160717200005)
+  [1m[35m (6.8ms)[0m  CREATE TABLE `carts` (`id` int(11) auto_increment PRIMARY KEY, `customer_id` int(11), `product_id` int(11), `product_group_id` int(11), `state_cart_id` int(11), `gift` tinyint(1), `gift_message` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_carts_on_customer_id`  (`customer_id`) ,  INDEX `index_carts_on_product_id`  (`product_id`) ,  INDEX `index_carts_on_product_group_id`  (`product_group_id`) ,  INDEX `index_carts_on_state_cart_id`  (`state_cart_id`) ) ENGINE=InnoDB
+  [1m[36m (12.6ms)[0m  [1mALTER TABLE `carts` ADD CONSTRAINT `fk_rails_e02ab95379`
+FOREIGN KEY (`customer_id`)
+  REFERENCES `customers` (`id`)
+[0m
+  [1m[35m (11.2ms)[0m  ALTER TABLE `carts` ADD CONSTRAINT `fk_rails_916f2a1419`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+
+  [1m[36m (10.6ms)[0m  [1mALTER TABLE `carts` ADD CONSTRAINT `fk_rails_672bf8436c`
+FOREIGN KEY (`product_group_id`)
+  REFERENCES `product_groups` (`id`)
+[0m
+  [1m[35m (10.8ms)[0m  ALTER TABLE `carts` ADD CONSTRAINT `fk_rails_81a042203b`
+FOREIGN KEY (`state_cart_id`)
+  REFERENCES `state_carts` (`id`)
+
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717200005')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePaymentTypes (20160717200838)
+  [1m[35m (4.6ms)[0m  CREATE TABLE `payment_types` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717200838')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateWireTransfers (20160717201258)
+  [1m[35m (6.0ms)[0m  CREATE TABLE `wire_transfers` (`id` int(11) auto_increment PRIMARY KEY, `bank` varchar(255), `titular_account` varchar(255), `account` varchar(255), `account_type` varchar(255), `rut` varchar(255), `email` varchar(255), `payment_type_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_wire_transfers_on_payment_type_id`  (`payment_type_id`) ) ENGINE=InnoDB
+  [1m[36m (11.8ms)[0m  [1mALTER TABLE `wire_transfers` ADD CONSTRAINT `fk_rails_eb61fc3f95`
+FOREIGN KEY (`payment_type_id`)
+  REFERENCES `payment_types` (`id`)
+[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160717201258')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreatePaymentStatuses (20160717201518)
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE `payment_statuses` (`id` int(11) auto_increment PRIMARY KEY, `status` varchar(255), `payment_type_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_payment_statuses_on_payment_type_id`  (`payment_type_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (8.9ms)[0m  ALTER TABLE `payment_statuses` ADD CONSTRAINT `fk_rails_e072d4cb8f`
+FOREIGN KEY (`payment_type_id`)
+  REFERENCES `payment_types` (`id`)
+
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717201518')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateOrderStatuses (20160717201713)
+  [1m[35m (5.5ms)[0m  CREATE TABLE `order_statuses` (`id` int(11) auto_increment PRIMARY KEY, `status` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717201713')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateOrders (20160717202153)
+  [1m[35m (8.6ms)[0m  CREATE TABLE `orders` (`id` int(11) auto_increment PRIMARY KEY, `cart_id` int(11), `customer_id` int(11), `order_status_id` int(11), `payment_status_id` int(11), `payment_type_id` int(11), `address_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_cart_id`  (`cart_id`) ,  INDEX `index_orders_on_customer_id`  (`customer_id`) ,  INDEX `index_orders_on_order_status_id`  (`order_status_id`) ,  INDEX `index_orders_on_payment_status_id`  (`payment_status_id`) ,  INDEX `index_orders_on_payment_type_id`  (`payment_type_id`) ,  INDEX `index_orders_on_address_id`  (`address_id`) ) ENGINE=InnoDB
+  [1m[36m (15.2ms)[0m  [1mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_5cdf0e0ad4`
+FOREIGN KEY (`cart_id`)
+  REFERENCES `carts` (`id`)
+[0m
+  [1m[35m (12.8ms)[0m  ALTER TABLE `orders` ADD CONSTRAINT `fk_rails_3dad120da9`
+FOREIGN KEY (`customer_id`)
+  REFERENCES `customers` (`id`)
+
+  [1m[36m (13.3ms)[0m  [1mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7a22cf8b0e`
+FOREIGN KEY (`order_status_id`)
+  REFERENCES `order_statuses` (`id`)
+[0m
+  [1m[35m (12.3ms)[0m  ALTER TABLE `orders` ADD CONSTRAINT `fk_rails_723e7dd5ba`
+FOREIGN KEY (`payment_status_id`)
+  REFERENCES `payment_statuses` (`id`)
+
+  [1m[36m (12.6ms)[0m  [1mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_1bd2d26de1`
+FOREIGN KEY (`payment_type_id`)
+  REFERENCES `payment_types` (`id`)
+[0m
+  [1m[35m (12.5ms)[0m  ALTER TABLE `orders` ADD CONSTRAINT `fk_rails_774ef80392`
+FOREIGN KEY (`address_id`)
+  REFERENCES `addresses` (`id`)
+
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160717202153')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'addresses'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `addresses`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'admins'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `admins`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'articles'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `articles`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'artist_procuct_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `artist_procuct_groups`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'artists'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `artists`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'carts'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `carts`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'cities'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `cities`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'customer_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `customer_groups`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'customers'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `customers`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'order_statuses'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `order_statuses`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'orders'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `orders`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'payment_statuses'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `payment_statuses`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'payment_types'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `payment_types`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `product_groups`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_product_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `product_product_groups`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_types'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `product_types`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'products'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `products`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'state_carts'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `state_carts`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'states'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `states`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'wire_transfers'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `wire_transfers`

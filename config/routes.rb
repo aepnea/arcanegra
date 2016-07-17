@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :orders
+  resources :order_statuses
+  resources :payment_statuses
+  resources :wire_transfers
+  resources :payment_types
   resources :carts
   resources :state_carts
   resources :product_product_groups

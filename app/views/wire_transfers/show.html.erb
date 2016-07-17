@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bank:</strong>
+  <%= @wire_transfer.bank %>
+</p>
+
+<p>
+  <strong>Titular account:</strong>
+  <%= @wire_transfer.titular_account %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @wire_transfer.account %>
+</p>
+
+<p>
+  <strong>Account type:</strong>
+  <%= @wire_transfer.account_type %>
+</p>
+
+<p>
+  <strong>Rut:</strong>
+  <%= @wire_transfer.rut %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @wire_transfer.email %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @wire_transfer.payment_type %>
+</p>
+
+<%= link_to 'Edit', edit_wire_transfer_path(@wire_transfer) %> |
+<%= link_to 'Back', wire_transfers_path %>

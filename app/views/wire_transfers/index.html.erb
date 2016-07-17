@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wire Transfers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bank</th>
+      <th>Titular account</th>
+      <th>Account</th>
+      <th>Account type</th>
+      <th>Rut</th>
+      <th>Email</th>
+      <th>Payment type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wire_transfers.each do |wire_transfer| %>
+      <tr>
+        <td><%= wire_transfer.bank %></td>
+        <td><%= wire_transfer.titular_account %></td>
+        <td><%= wire_transfer.account %></td>
+        <td><%= wire_transfer.account_type %></td>
+        <td><%= wire_transfer.rut %></td>
+        <td><%= wire_transfer.email %></td>
+        <td><%= wire_transfer.payment_type %></td>
+        <td><%= link_to 'Show', wire_transfer %></td>
+        <td><%= link_to 'Edit', edit_wire_transfer_path(wire_transfer) %></td>
+        <td><%= link_to 'Destroy', wire_transfer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wire transfer', new_wire_transfer_path %>
