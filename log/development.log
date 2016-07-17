@@ -294,3 +294,125 @@ WHERE fk.referenced_column_name is not null
   AND fk.table_name = 'states'
 
   [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `states`[0m
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateStates (20160716041416)
+  [1m[35m (3.5ms)[0m  CREATE TABLE `states` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160716041416')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCities (20160716041422)
+  [1m[35m (3.9ms)[0m  CREATE TABLE `cities` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `state_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_cities_on_state_id`  (`state_id`) ) ENGINE=InnoDB
+  [1m[36m (5.1ms)[0m  [1mALTER TABLE `cities` ADD CONSTRAINT `fk_rails_59b5e22e07`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160716041422')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateProductTypes (20160716041451)
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE `product_types` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160716041451')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateArtists (20160716041600)
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE `artists` (`id` int(11) auto_increment PRIMARY KEY, `firstname` varchar(255), `lastname` varchar(255), `short_description` varchar(255), `description` text, `email` varchar(255), `web` varchar(255), `address` varchar(255), `city_id` int(11), `state_id` int(11), `country` varchar(255), `phone` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_artists_on_city_id`  (`city_id`) ,  INDEX `index_artists_on_state_id`  (`state_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (4.9ms)[0m  ALTER TABLE `artists` ADD CONSTRAINT `fk_rails_3012537369`
+FOREIGN KEY (`city_id`)
+  REFERENCES `cities` (`id`)
+
+  [1m[36m (4.5ms)[0m  [1mALTER TABLE `artists` ADD CONSTRAINT `fk_rails_734c912cc9`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160716041600')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateProducts (20160716041649)
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE `products` (`id` int(11) auto_increment PRIMARY KEY, `product_type_id` int(11), `artist_id` int(11), `name` varchar(255), `short_description` varchar(255), `description` text, `on_sale` tinyint(1), `price` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_product_type_id`  (`product_type_id`) ,  INDEX `index_products_on_artist_id`  (`artist_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (5.5ms)[0m  ALTER TABLE `products` ADD CONSTRAINT `fk_rails_8464b8e5d7`
+FOREIGN KEY (`product_type_id`)
+  REFERENCES `product_types` (`id`)
+
+  [1m[36m (4.8ms)[0m  [1mALTER TABLE `products` ADD CONSTRAINT `fk_rails_36cb1a30ab`
+FOREIGN KEY (`artist_id`)
+  REFERENCES `artists` (`id`)
+[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160716041649')[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateArticles (20160716041823)
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE `articles` (`id` int(11) auto_increment PRIMARY KEY, `artist_id` int(11), `product_id` int(11), `tittle` varchar(255), `description` varchar(255), `text` text, `enable` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_articles_on_artist_id`  (`artist_id`) ,  INDEX `index_articles_on_product_id`  (`product_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (4.8ms)[0m  ALTER TABLE `articles` ADD CONSTRAINT `fk_rails_0698140869`
+FOREIGN KEY (`artist_id`)
+  REFERENCES `artists` (`id`)
+
+  [1m[36m (5.5ms)[0m  [1mALTER TABLE `articles` ADD CONSTRAINT `fk_rails_8d39306875`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160716041823')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.8ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'articles'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `articles`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'artists'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `artists`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'cities'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `cities`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_types'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `product_types`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'products'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `products`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'states'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `states`[0m
