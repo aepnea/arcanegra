@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :carts
+  resources :state_carts
+  resources :product_product_groups
+  resources :artist_procuct_groups
+  resources :product_groups
   resources :addresses
   resources :customer_groups
   devise_for :admins

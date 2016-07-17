@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @cart.customer %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @cart.product %>
+</p>
+
+<p>
+  <strong>Product group:</strong>
+  <%= @cart.product_group %>
+</p>
+
+<p>
+  <strong>State cart:</strong>
+  <%= @cart.state_cart %>
+</p>
+
+<p>
+  <strong>Gift:</strong>
+  <%= @cart.gift %>
+</p>
+
+<p>
+  <strong>Gift message:</strong>
+  <%= @cart.gift_message %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

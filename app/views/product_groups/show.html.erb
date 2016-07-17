@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product_group.name %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @product_group.short_description %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product_group.description %>
+</p>
+
+<p>
+  <strong>On sale:</strong>
+  <%= @product_group.on_sale %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product_group.price %>
+</p>
+
+<%= link_to 'Edit', edit_product_group_path(@product_group) %> |
+<%= link_to 'Back', product_groups_path %>

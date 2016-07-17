@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Artist Procuct Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product group</th>
+      <th>Article</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artist_procuct_groups.each do |artist_procuct_group| %>
+      <tr>
+        <td><%= artist_procuct_group.product_group %></td>
+        <td><%= artist_procuct_group.article %></td>
+        <td><%= link_to 'Show', artist_procuct_group %></td>
+        <td><%= link_to 'Edit', edit_artist_procuct_group_path(artist_procuct_group) %></td>
+        <td><%= link_to 'Destroy', artist_procuct_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artist procuct group', new_artist_procuct_group_path %>

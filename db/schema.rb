@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717185858) do
+ActiveRecord::Schema.define(version: 20160717200005) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 20160717185858) do
   add_index "articles", ["artist_id"], name: "index_articles_on_artist_id", using: :btree
   add_index "articles", ["product_id"], name: "index_articles_on_product_id", using: :btree
 
+  create_table "artist_procuct_groups", force: :cascade do |t|
+    t.integer  "product_group_id", limit: 4
+    t.integer  "article_id",       limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "artist_procuct_groups", ["article_id"], name: "index_artist_procuct_groups_on_article_id", using: :btree
+  add_index "artist_procuct_groups", ["product_group_id"], name: "index_artist_procuct_groups_on_product_group_id", using: :btree
+
   create_table "artists", force: :cascade do |t|
     t.string   "firstname",         limit: 255
     t.string   "lastname",          limit: 255
@@ -76,6 +86,22 @@ ActiveRecord::Schema.define(version: 20160717185858) do
 
   add_index "artists", ["city_id"], name: "index_artists_on_city_id", using: :btree
   add_index "artists", ["state_id"], name: "index_artists_on_state_id", using: :btree
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "customer_id",      limit: 4
+    t.integer  "product_id",       limit: 4
+    t.integer  "product_group_id", limit: 4
+    t.integer  "state_cart_id",    limit: 4
+    t.boolean  "gift"
+    t.text     "gift_message",     limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "carts", ["customer_id"], name: "index_carts_on_customer_id", using: :btree
+  add_index "carts", ["product_group_id"], name: "index_carts_on_product_group_id", using: :btree
+  add_index "carts", ["product_id"], name: "index_carts_on_product_id", using: :btree
+  add_index "carts", ["state_cart_id"], name: "index_carts_on_state_cart_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -112,6 +138,26 @@ ActiveRecord::Schema.define(version: 20160717185858) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
 
+  create_table "product_groups", force: :cascade do |t|
+    t.string   "name",              limit: 255
+    t.string   "short_description", limit: 255
+    t.text     "description",       limit: 65535
+    t.boolean  "on_sale"
+    t.integer  "price",             limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  create_table "product_product_groups", force: :cascade do |t|
+    t.integer  "product_id",       limit: 4
+    t.integer  "product_group_id", limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "product_product_groups", ["product_group_id"], name: "index_product_product_groups_on_product_group_id", using: :btree
+  add_index "product_product_groups", ["product_id"], name: "index_product_product_groups_on_product_id", using: :btree
+
   create_table "product_types", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -133,6 +179,12 @@ ActiveRecord::Schema.define(version: 20160717185858) do
   add_index "products", ["artist_id"], name: "index_products_on_artist_id", using: :btree
   add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
 
+  create_table "state_carts", force: :cascade do |t|
+    t.string   "state",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "states", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -144,10 +196,18 @@ ActiveRecord::Schema.define(version: 20160717185858) do
   add_foreign_key "addresses", "states"
   add_foreign_key "articles", "artists"
   add_foreign_key "articles", "products"
+  add_foreign_key "artist_procuct_groups", "articles"
+  add_foreign_key "artist_procuct_groups", "product_groups"
   add_foreign_key "artists", "cities"
   add_foreign_key "artists", "states"
+  add_foreign_key "carts", "customers"
+  add_foreign_key "carts", "product_groups"
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "state_carts"
   add_foreign_key "cities", "states"
   add_foreign_key "customers", "customer_groups"
+  add_foreign_key "product_product_groups", "product_groups"
+  add_foreign_key "product_product_groups", "products"
   add_foreign_key "products", "artists"
   add_foreign_key "products", "product_types"
 end
