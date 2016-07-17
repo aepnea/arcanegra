@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717184833) do
+ActiveRecord::Schema.define(version: 20160717185858) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "customer_id", limit: 4
+    t.integer  "city_id",     limit: 4
+    t.integer  "state_id",    limit: 4
+    t.string   "address",     limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["customer_id"], name: "index_addresses_on_customer_id", using: :btree
+  add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -126,6 +139,9 @@ ActiveRecord::Schema.define(version: 20160717184833) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "customers"
+  add_foreign_key "addresses", "states"
   add_foreign_key "articles", "artists"
   add_foreign_key "articles", "products"
   add_foreign_key "artists", "cities"
