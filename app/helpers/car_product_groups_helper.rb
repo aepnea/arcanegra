@@ -1,0 +1,2 @@
+module CarProductGroupsHelper
+end
