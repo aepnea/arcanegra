@@ -19,8 +19,8 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.product_type %></td>
-        <td><%= product.artist %></td>
+        <td><%= product.product_type.name %></td>
+        <td><%= product.artist.firstname %></td>
         <td><%= product.name %></td>
         <td><%= product.short_description %></td>
         <td><%= product.description %></td>

@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :product_type_id %><br>
-    <%= f.text_field :product_type_id %>
+    <%= f.collection_select :product_type_id, @product_type, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :artist_id %><br>
-    <%= f.text_field :artist_id %>
+    <%= f.collection_select :artist_id, @artist, :id, :firstname %>
   </div>
   <div class="field">
     <%= f.label :name %><br>

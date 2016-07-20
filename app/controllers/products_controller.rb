@@ -5,20 +5,28 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @artist = Artist.all
+    @product_type = ProductType.all
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @artist = Artist.all
+    @product_type = ProductType.all
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @artist = Artist.all
+    @product_type = ProductType.all
   end
 
   # GET /products/1/edit
   def edit
+    @artist = Artist.all
+    @product_type = ProductType.all
   end
 
   # POST /products
