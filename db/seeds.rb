@@ -50,15 +50,15 @@ Artist.create ([{firstname: 'artista2', lastname:'artistaapellido2', short_descr
 Artist.create ([{firstname: 'artista3', lastname:'artistaapellido3', short_description:'hola soy artista 3', description:'hola soy un artista la zorra 3', email:'artista3@arcanegra.cl', web:'www.artista3.cl', address:'calle artista casa 4' , country:'Chile', phone:'092380943' }])
 
 ###
-Product.create ([{product_type: '1', artist: '1', name: 'producto1', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '99000'} ])
-		#		 {product_type: '2', artist: '2', name: 'producto2', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '3', artist: '3', name: 'producto3', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '4', artist: '1', name: 'producto4', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '5', artist: '2', name: 'producto5', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '6', artist: '3', name: 'producto6', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '7', artist: '1', name: 'producto7', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '8', artist: '2', name: 'producto8', short_description: '', description: '', on_sale: '', price: ''}, \
-		#		 {product_type: '9', artist: '3', name: 'producto9', short_description: '', description: '', on_sale: '', price: ''} ])
+Product.create ([{product_type_id: '1', artist_id: '1', name: 'producto1', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '99000'}, \
+				 {product_type_id: '2', artist_id: '2', name: 'producto2', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900'}, \
+				 {product_type_id: '3', artist_id: '3', name: 'producto3', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900'}, \
+				 {product_type_id: '4', artist_id: '1', name: 'producto4', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900'}, \
+				 {product_type_id: '5', artist_id: '2', name: 'producto5', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900'}, \
+				 {product_type_id: '6', artist_id: '3', name: 'producto6', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900'}, \
+				 {product_type_id: '7', artist_id: '1', name: 'producto7', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900'}, \
+				 {product_type_id: '8', artist_id: '2', name: 'producto8', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'false', price: '9900'}, \
+				 {product_type_id: '9', artist_id: '3', name: 'producto9', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'false', price: '9900'} ])
 
 
 
