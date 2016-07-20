@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :car_product_groups
-  resources :car_products
+  resources :cart_products
+  resources :cart_product_groups
   resources :orders
   resources :order_statuses
   resources :payment_statuses

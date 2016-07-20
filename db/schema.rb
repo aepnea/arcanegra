@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720021223) do
+ActiveRecord::Schema.define(version: 20160720023421) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -87,6 +87,26 @@ ActiveRecord::Schema.define(version: 20160720021223) do
 
   add_index "artists", ["city_id"], name: "index_artists_on_city_id", using: :btree
   add_index "artists", ["state_id"], name: "index_artists_on_state_id", using: :btree
+
+  create_table "cart_product_groups", force: :cascade do |t|
+    t.integer  "product_group_id", limit: 4
+    t.integer  "cart_id",          limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "cart_product_groups", ["cart_id"], name: "index_cart_product_groups_on_cart_id", using: :btree
+  add_index "cart_product_groups", ["product_group_id"], name: "index_cart_product_groups_on_product_group_id", using: :btree
+
+  create_table "cart_products", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "cart_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "cart_products", ["cart_id"], name: "index_cart_products_on_cart_id", using: :btree
+  add_index "cart_products", ["product_id"], name: "index_cart_products_on_product_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
     t.integer  "customer_id",   limit: 4
@@ -250,6 +270,10 @@ ActiveRecord::Schema.define(version: 20160720021223) do
   add_foreign_key "artist_procuct_groups", "product_groups"
   add_foreign_key "artists", "cities"
   add_foreign_key "artists", "states"
+  add_foreign_key "cart_product_groups", "carts"
+  add_foreign_key "cart_product_groups", "product_groups"
+  add_foreign_key "cart_products", "carts"
+  add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "customers"
   add_foreign_key "carts", "state_carts"
   add_foreign_key "cities", "states"

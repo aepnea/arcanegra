@@ -1,6 +1,6 @@
-class CreateCarProducts < ActiveRecord::Migration
+class CreateCartProducts < ActiveRecord::Migration
   def change
-    create_table :car_products do |t|
+    create_table :cart_products do |t|
       t.references :product, index: true, foreign_key: true
       t.references :cart, index: true, foreign_key: true
 

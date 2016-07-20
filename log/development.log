@@ -2450,3 +2450,251 @@ WHERE fk.referenced_column_name is not null
   AND fk.table_name = 'wire_transfers'
 [0m
   [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `wire_transfers`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateCartProductGroups (20160720023403)
+  [1m[35m (23.7ms)[0m  CREATE TABLE `cart_product_groups` (`id` int(11) auto_increment PRIMARY KEY, `product_group_id` int(11), `cart_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_cart_product_groups_on_product_group_id`  (`product_group_id`) ,  INDEX `index_cart_product_groups_on_cart_id`  (`cart_id`) ) ENGINE=InnoDB
+  [1m[36m (11.5ms)[0m  [1mALTER TABLE `cart_product_groups` ADD CONSTRAINT `fk_rails_de84ca7c1c`
+FOREIGN KEY (`product_group_id`)
+  REFERENCES `product_groups` (`id`)
+[0m
+  [1m[35m (10.2ms)[0m  ALTER TABLE `cart_product_groups` ADD CONSTRAINT `fk_rails_bf2fd606eb`
+FOREIGN KEY (`cart_id`)
+  REFERENCES `carts` (`id`)
+
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160720023403')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCartProducts (20160720023421)
+  [1m[35m (4.8ms)[0m  CREATE TABLE `cart_products` (`id` int(11) auto_increment PRIMARY KEY, `product_id` int(11), `cart_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_cart_products_on_product_id`  (`product_id`) ,  INDEX `index_cart_products_on_cart_id`  (`cart_id`) ) ENGINE=InnoDB
+  [1m[36m (10.7ms)[0m  [1mALTER TABLE `cart_products` ADD CONSTRAINT `fk_rails_b6ff2a078a`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (14.4ms)[0m  ALTER TABLE `cart_products` ADD CONSTRAINT `fk_rails_a4f3e327f3`
+FOREIGN KEY (`cart_id`)
+  REFERENCES `carts` (`id`)
+
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160720023421')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'addresses'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `addresses`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'admins'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `admins`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'articles'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `articles`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'artist_procuct_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `artist_procuct_groups`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'artists'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `artists`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'cart_product_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `cart_product_groups`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'cart_products'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `cart_products`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'carts'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `carts`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'cities'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `cities`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'customer_groups'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `customer_groups`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'customers'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `customers`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'order_statuses'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `order_statuses`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'orders'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `orders`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'payment_statuses'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `payment_statuses`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'payment_types'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `payment_types`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_groups'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `product_groups`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_product_groups'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `product_product_groups`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'product_types'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `product_types`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'products'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `products`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'state_carts'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `state_carts`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'states'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `states`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'arcanegra_dev'
+  AND fk.table_name = 'wire_transfers'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `wire_transfers`
