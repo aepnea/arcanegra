@@ -8,3 +8,5 @@ model/arcanegra_model_1.1.mwb.bak
 
 tmp/*
 *.bak
+
+log/development.log
