@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'home#index'
+
   resources :cart_products
   resources :cart_product_groups
   resources :orders

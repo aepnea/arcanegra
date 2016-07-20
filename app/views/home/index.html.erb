@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>ArcaNegra</h1>
+
+
+    <% @artist_random.each do |a|  %>
+ 	   <%= a.firstname %>
+    <%end%>
+    <% @product_random.each do |p|%>
+    	<%= p.name %>
+    	<%= p.short_description %>
+    	<%= p.price %>
+	<%end%>    
