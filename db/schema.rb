@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 20160722024421) do
 
   create_table "artist_procuct_groups", force: :cascade do |t|
     t.integer  "product_group_id", limit: 4
-    t.integer  "article_id",       limit: 4
+    t.integer  "artist_id",        limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "artist_procuct_groups", ["article_id"], name: "index_artist_procuct_groups_on_article_id", using: :btree
+  add_index "artist_procuct_groups", ["artist_id"], name: "index_artist_procuct_groups_on_artist_id", using: :btree
   add_index "artist_procuct_groups", ["product_group_id"], name: "index_artist_procuct_groups_on_product_group_id", using: :btree
 
   create_table "artists", force: :cascade do |t|
@@ -266,7 +266,7 @@ ActiveRecord::Schema.define(version: 20160722024421) do
   add_foreign_key "addresses", "states"
   add_foreign_key "articles", "artists"
   add_foreign_key "articles", "products"
-  add_foreign_key "artist_procuct_groups", "articles"
+  add_foreign_key "artist_procuct_groups", "artists"
   add_foreign_key "artist_procuct_groups", "product_groups"
   add_foreign_key "artists", "cities"
   add_foreign_key "artists", "states"

@@ -7,6 +7,7 @@ class CreateCarts < ActiveRecord::Migration
       t.references :state_cart, index: true, foreign_key: true
       t.boolean :gift
       t.text :gift_message
+      t.integer :total_price
 
       t.timestamps null: false
     end
