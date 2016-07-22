@@ -10,5 +10,10 @@
   <%= @cart_product_group.cart %>
 </p>
 
+<p>
+  <strong>Quantity:</strong>
+  <%= @cart_product_group.quantity %>
+</p>
+
 <%= link_to 'Edit', edit_cart_product_group_path(@cart_product_group) %> |
 <%= link_to 'Back', cart_product_groups_path %>

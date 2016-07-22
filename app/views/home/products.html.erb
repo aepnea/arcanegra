@@ -1,0 +1,96 @@
+<h1>Productos</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Tazas</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tazas.each do |tazas| %>
+      <tr>
+        <td><%= tazas.name %></td>
+        <td><%= tazas.short_description %></td>
+        <td><%= tazas.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <thead>
+    <tr>
+      <th>Tazas con Platillo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tazasplatillo.each do |tp| %>
+      <tr>
+        <td><%= tp.name %></td>
+        <td><%= tp.short_description %></td>
+        <td><%= tp.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<thead>
+    <tr>
+      <th>Plato</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plato.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.short_description %></td>
+        <td><%= p.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<thead>
+    <tr>
+      <th>Carcaza de Celular</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carcazacelular.each do |cc| %>
+      <tr>
+        <td><%= cc.name %></td>
+        <td><%= cc.short_description %></td>
+        <td><%= cc.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<thead>
+    <tr>
+      <th>Carcaza de Tablet</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carcazatablet.each do |ct| %>
+      <tr>
+        <td><%= ct.name %></td>
+        <td><%= ct.short_description %></td>
+        <td><%= ct.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Order status', new_order_status_path %>

@@ -1,11 +1,27 @@
 class HomeController < ApplicationController
-	  #before_action :set_address, only: [:show, :edit, :update, :destroy]
-	    before_action :set_address, only: [:show]
+  
+  def index
+  	@artist_random = Artist.order("RAND()").first(1)
+	@product_random = Product.order("RAND()").first(5)
+  end
+  def artists
+  	@artist = Artist.all
+  end
 
+  def products
+  	@tazas = Product.where(product_type: '1')
+  	@tazasplatillo = Product.where(product_type: '2')
+  	@plato = Product.where(product_type: '3')
+  	@carcazacelular = Product.where(product_type: '4')
+  	@carcazatablet = Product.where(product_type: '5')
+  	@cortinabano = Product.where(product_type: '6')
+  	@lienzo = Product.where(product_type: '7')
+  	@polera = Product.where(product_type: '8')
+  	@poleron = Product.where(product_type: '9')
+  	@almohada = Product.where(product_type: '10')
 
-	    def index
-	    	@artist_random = Artist.order("RAND()").first(1)
-	    	@product_random = Product.order("RAND()").first(5)
-	    end
+  end
 
+  def whatwedo
+  end
 end

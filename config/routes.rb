@@ -1,31 +1,52 @@
 Rails.application.routes.draw do
 
+  devise_for :customers
+  get 'home/artists'
+
+  get 'home/products'
+
+  get 'home/whatwedo'
+
   root 'home#index'
 
-  resources :cart_products
-  resources :cart_product_groups
-  resources :orders
-  resources :order_statuses
-  resources :payment_statuses
-  resources :wire_transfers
-  resources :payment_types
-  resources :carts
-  resources :state_carts
-  resources :product_product_groups
-  resources :artist_procuct_groups
-  resources :product_groups
-  resources :addresses
-  resources :customer_groups
+
+#### SCOPE ADMIN
+
   devise_for :admins
-  devise_for :customers
-  resources :articles
-  resources :products
-  resources :artists
-  resources :cities
-  resources :states
-  resources :product_types
-  resources :product_types
-  resources :products
+  devise_scope :admin do
+    get '/administrators' => 'devise/sessions#new'
+  end
+  authenticated do
+    as :admins do
+      scope "/admin" do
+        resources :cart_products
+        resources :cart_product_groups
+        resources :orders
+        resources :order_statuses
+        resources :payment_statuses
+        resources :wire_transfers
+        resources :payment_types
+        resources :carts
+        resources :state_carts
+        resources :product_product_groups
+        resources :artist_procuct_groups
+        resources :product_groups
+        resources :addresses
+        resources :customer_groups
+        resources :articles
+        resources :products
+        resources :artists
+        resources :cities
+        resources :states
+        resources :product_types
+        resources :product_types
+        resources :products
+      end
+    end
+  end
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

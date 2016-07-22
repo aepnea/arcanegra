@@ -16,6 +16,7 @@
       <tr>
         <td><%= cart_product_group.product_group %></td>
         <td><%= cart_product_group.cart %></td>
+        <td><%= cart_product_group.quantity %></td>
         <td><%= link_to 'Show', cart_product_group %></td>
         <td><%= link_to 'Edit', edit_cart_product_group_path(cart_product_group) %></td>
         <td><%= link_to 'Destroy', cart_product_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
