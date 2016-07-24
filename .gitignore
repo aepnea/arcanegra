@@ -10,3 +10,4 @@ tmp/*
 *.bak
 
 log/development.log
+config/database.yml
