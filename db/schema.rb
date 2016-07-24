@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160722024421) do
   create_table "carts", force: :cascade do |t|
     t.integer  "customer_id",   limit: 4
     t.integer  "state_cart_id", limit: 4
+    t.integer  "total_price",   limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

@@ -1,28 +1,50 @@
+# default: &default
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: arcanegra_dev
+#   username: root
+#   password: "root"
+#
+#   socket: /var/run/mysqld/mysqld.sock
+#
+# test:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: arcanegra_test
+#   pool: 5
+#   username: root
+#   password: "root"
+#
+#   socket: /var/run/mysqld/mysqld.sock
+#
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: arcanegra
+#   pool: 5
+#   username: root
+#   password: "root"
+#   socket: /var/run/mysqld/mysqld.sock
+
 default: &default
-development:
   adapter: mysql2
   encoding: utf8
-  database: arcanegra_dev
+  pool: 5
   username: root
   password: "root"
+  socket: /var/run/mysqld/mysqld.sock
 
-  socket: /tmp/mysql.sock
+development:
+  <<: *default
+  database: arcanegra_dev
 
 test:
-  adapter: mysql2
-  encoding: utf8
+  <<: *default
   database: arcanegra_test
-  pool: 5
-  username: root
-  password: "root"
-
-  socket: /tmp/mysql.sock
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: arcanegra
-  pool: 5
+  <<: *default
+  database: arcanegra_dev
   username: root
-  password: "root"
-  socket: /tmp/mysql.sock
+  password: <%= ENV['ARCANEGRA_DATABASE_PASSWORD'] %>
