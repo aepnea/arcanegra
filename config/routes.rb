@@ -1,24 +1,29 @@
 Rails.application.routes.draw do
 
+ 
+
   devise_for :customers
+  
+  root 'home#index'
+
   get 'home/artists'
 
   get 'home/products'
 
   get 'home/whatwedo'
 
-  root 'home#index'
+  
 
 
 #### SCOPE ADMIN
 
   devise_for :admins
-  devise_scope :admin do
+  devise_scope :admins do
     get '/administrators' => 'devise/sessions#new'
   end
-  authenticated do
+  unauthenticated do
     as :admins do
-      scope "/admin" do
+      scope "/admins" do
         resources :cart_products
         resources :cart_product_groups
         resources :orders
