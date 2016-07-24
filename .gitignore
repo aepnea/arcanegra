@@ -1,10 +1,9 @@
-
 arcanegra_model_1.mwb.bak
+config/database.yml
 
 *.bak
 
 model/arcanegra_model_1.1.mwb.bak
-config/database.yml
 
 tmp/*
 *.bak
