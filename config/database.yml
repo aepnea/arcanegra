@@ -27,6 +27,7 @@
 #   password: "root"
 #   socket: /var/run/mysqld/mysqld.sock
 
+## the rial
 default: &default
   adapter: mysql2
   encoding: utf8
