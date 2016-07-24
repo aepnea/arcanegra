@@ -9,10 +9,12 @@
 <body>
 <%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %>
 <% if customer_signed_in? %>
- <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
+ 	<%= link_to "Salir", destroy_customer_session_path, method: :delete %>
 
+ <%elsif admin_signed_in? %>
+ 	<%= link_to "Salir", destroy_admin_session_path, method: :delete %>
  <%else%>
- <%= link_to "Login", new_customer_session_path %>
+ 	<%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %>
  <%end%>
 <%= yield %>
 

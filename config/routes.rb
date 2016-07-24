@@ -17,12 +17,12 @@ Rails.application.routes.draw do
 
 #### SCOPE ADMIN
 
-  devise_for :admins
-  devise_scope :admins do
+  devise_for :admin
+  devise_scope :admin do
     get '/administrators' => 'devise/sessions#new'
   end
-  unauthenticated do
-    as :admins do
+  authenticated :admin do
+    as :admin do
       scope "/admins" do
         resources :cart_products
         resources :cart_product_groups
