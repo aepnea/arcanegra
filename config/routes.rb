@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get '/administrators' => 'devise/sessions#new'
   end
   authenticated :admin do
+    root :to => "artists#index", as: :admins
+
     as :admin do
       scope "/admins" do
         resources :cart_products
