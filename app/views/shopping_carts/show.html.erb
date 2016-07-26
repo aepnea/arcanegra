@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Carrito de Compra</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shopping_cart.cart_product.each do |i_sh| %>
+     <%product = i_sh.product%>
+      <tr><%{id: "#{i_sh.product.id}"}%>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td>Eliminar</td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= @shopping_cart.total%>
+<br>

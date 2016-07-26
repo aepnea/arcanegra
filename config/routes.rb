@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
- 
+   devise_for :customers
 
-  devise_for :customers
+
+  resources :in_shopping_carts, only: [:create,:destroy] 
+
+  get "/carrito", to: "shopping_carts#show"
   
   root 'home#index'
 
