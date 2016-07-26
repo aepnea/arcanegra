@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722024421) do
+ActiveRecord::Schema.define(version: 20160726040028) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 20160722024421) do
     t.integer  "cart_id",          limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "quantity",         limit: 4
   end
 
   add_index "cart_product_groups", ["cart_id"], name: "index_cart_product_groups_on_cart_id", using: :btree
@@ -104,7 +103,6 @@ ActiveRecord::Schema.define(version: 20160722024421) do
     t.integer  "cart_id",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.integer  "quantity",   limit: 4
   end
 
   add_index "cart_products", ["cart_id"], name: "index_cart_products_on_cart_id", using: :btree
@@ -113,8 +111,10 @@ ActiveRecord::Schema.define(version: 20160722024421) do
   create_table "carts", force: :cascade do |t|
     t.integer  "customer_id",   limit: 4
     t.integer  "state_cart_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "total_price",   limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "ip",            limit: 255
   end
 
   add_index "carts", ["customer_id"], name: "index_carts_on_customer_id", using: :btree
@@ -230,6 +230,7 @@ ActiveRecord::Schema.define(version: 20160722024421) do
     t.integer  "price",             limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "sku",               limit: 255
   end
 
   add_index "products", ["artist_id"], name: "index_products_on_artist_id", using: :btree

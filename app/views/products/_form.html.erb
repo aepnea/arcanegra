@@ -39,6 +39,9 @@
     <%= f.label :price %><br>
     <%= f.number_field :price %>
   </div>
+  <div class="field">
+    <%= f.hidden_field :sku, :value => "#{(0...8).map { (65 + rand(20)).chr }.join}"  %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
