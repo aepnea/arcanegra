@@ -45,5 +45,9 @@ group :development do
   gem 'spring'
 ### DEVISE
 gem 'devise'
+
+### annotate
+
+gem 'annotate'
 end
 
