@@ -13,6 +13,6 @@ class InShoppingCartsController < ApplicationController
   	### quita del carrito de compra
   	@in_shopping_cart = CartProduct.find(params[:id])
   	@in_shopping_cart.destroy
-  	redirect carrito_path, notice: "Sse ha eliminado el producto del carrito"
+  	redirect_to carrito_path, notice: "Se ha eliminado el producto del carrito"
   end
 end
