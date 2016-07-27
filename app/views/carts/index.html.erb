@@ -5,12 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Customer</th>
-      <th>Product</th>
-      <th>Product group</th>
-      <th>State cart</th>
-      <th>Gift</th>
-      <th>Gift message</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +14,9 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
+        <td><%= cart.id %></td>
         <td><%= cart.customer %></td>
-        <td><%= cart.product %></td>
-        <td><%= cart.product_group %></td>
         <td><%= cart.state_cart %></td>
-        <td><%= cart.gift %></td>
-        <td><%= cart.gift_message %></td>
         <td><%= link_to 'Show', cart %></td>
         <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
         <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>

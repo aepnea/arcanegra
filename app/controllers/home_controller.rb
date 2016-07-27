@@ -3,6 +3,13 @@ class HomeController < ApplicationController
   def index
   	@artist_random = Artist.order("RAND()").first(1)
 	  @product_random = Product.order("RAND()").first(5)
+
+### guardando customer id en una cookie  
+    if customer_signed_in?
+      @user_id = current_customer.id
+      cookies[:user_id] = @user_id
+    end
+
   end
   def artists
   	@artist = Artist.all
