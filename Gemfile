@@ -49,5 +49,9 @@ gem 'devise'
 ### annotate
 
 gem 'annotate'
-end
 
+# paperclip
+gem 'paperclip'
+
+
+end

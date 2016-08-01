@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726040028) do
+ActiveRecord::Schema.define(version: 20160801003728) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -155,6 +155,18 @@ ActiveRecord::Schema.define(version: 20160726040028) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.integer  "product_id",           limit: 4
+    t.string   "archivo_file_name",    limit: 255
+    t.string   "archivo_content_type", limit: 255
+    t.integer  "archivo_file_size",    limit: 4
+    t.datetime "archivo_updated_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "images", ["product_id"], name: "index_images_on_product_id", using: :btree
+
   create_table "order_statuses", force: :cascade do |t|
     t.string   "status",     limit: 255
     t.datetime "created_at",             null: false
@@ -279,6 +291,7 @@ ActiveRecord::Schema.define(version: 20160726040028) do
   add_foreign_key "carts", "state_carts"
   add_foreign_key "cities", "states"
   add_foreign_key "customers", "customer_groups"
+  add_foreign_key "images", "products"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "carts"
   add_foreign_key "orders", "customers"
