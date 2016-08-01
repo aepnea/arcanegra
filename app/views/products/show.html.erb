@@ -43,9 +43,10 @@
 <%= render 'images/form', product_id: @product.id %>
 <ul>
   <% @product.images.each do |image| %>
-	<li>
-	  <%= image_tag image.archivo.url %>
-	</li>
+  <li>
+    <span><%= image_tag image.archivo.url %></span>
+		<span><%=  link_to "x", image, method: :delete %></span>
+  </li>
   <% end %>
 </ul>
 

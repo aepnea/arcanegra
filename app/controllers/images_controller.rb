@@ -1,6 +1,8 @@
 class ImagesController < ApplicationController
   before_action :authenticate_admin!
   #before_action :authenticate_owner!
+  before_action :set_image, only: [:destroy]
+  before_action :set_product, only: [:destroy]
   before_action :authenticate_product!
   def new
   end
@@ -16,20 +18,28 @@ class ImagesController < ApplicationController
 
   def destroy
     @image.destroy
-	redirect_to @index
+    redirect_to @product
   end
 
 
   private
-    def image_params
-      params.require(:image).permit(:product_id, :archivo)
-    end
     def authenticate_product!
-      @product = Product.find(params[:image][:product_id])
+      if params.has_key? :image
+        @product = Product.find(params[:image][:product_id])
+      end
       if @product.nil?
         redirect_to root_path, notice: "no puedes editar un producto ageno"
         return
       end
+    end
+    def image_params
+      params.require(:image).permit(:product_id, :archivo)
+    end
+    def set_image
+      @image = Image.find(params[:id])
+    end
+    def set_product
+      @product = @image.product
     end
 end
 =begin
