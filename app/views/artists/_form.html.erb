@@ -41,11 +41,11 @@
   </div>
   <div class="field">
     <%= f.label :city_id %><br>
-    <%= f.text_field :city_id %>
+    <%= f.collection_select :city_id, @city, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :state_id %><br>
-    <%= f.text_field :state_id %>
+    <%= f.collection_select :state_id, @state, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :country %><br>

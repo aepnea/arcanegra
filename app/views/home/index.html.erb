@@ -12,5 +12,7 @@ hola <%= @user_id %>
     	<%= p.price %>
     	<!--<%= render "in_shopping_carts/form",product: @product_random%> -->
 
-    	<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %>
+    	<!--<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %> -->
+    	<%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }%>
+
 	<%end%>    

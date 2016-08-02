@@ -15,6 +15,8 @@ class ArtistsController < ApplicationController
   # GET /artists/new
   def new
     @artist = Artist.new
+    @city = City.all
+    @state = State.all
   end
 
   # GET /artists/1/edit

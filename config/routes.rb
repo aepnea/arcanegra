@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
 
   resources :in_shopping_carts, only: [:create,:destroy] 
+  get "/in_shopping_carts", to: "in_shopping_carts#create"
 
   get "/carrito", to: "shopping_carts#show"
   
