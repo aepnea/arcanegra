@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801003728) do
+ActiveRecord::Schema.define(version: 20160801195112) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -70,19 +70,27 @@ ActiveRecord::Schema.define(version: 20160801003728) do
   add_index "artist_procuct_groups", ["product_group_id"], name: "index_artist_procuct_groups_on_product_group_id", using: :btree
 
   create_table "artists", force: :cascade do |t|
-    t.string   "firstname",         limit: 255
-    t.string   "lastname",          limit: 255
-    t.string   "short_description", limit: 255
-    t.text     "description",       limit: 65535
-    t.string   "email",             limit: 255
-    t.string   "web",               limit: 255
-    t.string   "address",           limit: 255
-    t.integer  "city_id",           limit: 4
-    t.integer  "state_id",          limit: 4
-    t.string   "country",           limit: 255
-    t.string   "phone",             limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "firstname",               limit: 255
+    t.string   "lastname",                limit: 255
+    t.string   "short_description",       limit: 255
+    t.text     "description",             limit: 65535
+    t.string   "email",                   limit: 255
+    t.string   "web",                     limit: 255
+    t.string   "address",                 limit: 255
+    t.integer  "city_id",                 limit: 4
+    t.integer  "state_id",                limit: 4
+    t.string   "country",                 limit: 255
+    t.string   "phone",                   limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "cover_file_name",         limit: 255
+    t.string   "cover_content_type",      limit: 255
+    t.integer  "cover_file_size",         limit: 4
+    t.datetime "cover_updated_at"
+    t.string   "background_file_name",    limit: 255
+    t.string   "background_content_type", limit: 255
+    t.integer  "background_file_size",    limit: 4
+    t.datetime "background_updated_at"
   end
 
   add_index "artists", ["city_id"], name: "index_artists_on_city_id", using: :btree

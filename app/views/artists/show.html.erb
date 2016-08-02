@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="cabecera" style="background-image:url(<%= @artist.background.url(:medium) %>);padding:20px;">
+
+</div>
+
+<div class="cover" style="background-image:url(<%= @artist.cover.url(:medium) %>);padding:20px;">
+
+</div>
+
 <p>
   <strong>Firstname:</strong>
   <%= @artist.firstname %>
