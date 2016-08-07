@@ -49,10 +49,18 @@ gem 'devise'
 ### annotate
 
 gem 'annotate'
+<<<<<<< HEAD
 
 
 #### FLOW.CL
 
 gem 'kmflow'
 end
+=======
+>>>>>>> imagenes
 
+# paperclip
+gem 'paperclip'
+
+
+end

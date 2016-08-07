@@ -39,5 +39,17 @@
   <strong>SKU:</strong>
   <%= @product.sku %>
 </p>
+
+<%= render 'images/form', product_id: @product.id %>
+<ul>
+  <% @product.images.each do |image| %>
+  <li>
+    <span><%= image_tag image.archivo.url %></span>
+		<span><%=  link_to "x", image, method: :delete %></span>
+  </li>
+  <% end %>
+</ul>
+
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   def show
     @artist = Artist.all
     @product_type = ProductType.all
+	@image = Image.new
   end
 
   # GET /products/new
