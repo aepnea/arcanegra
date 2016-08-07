@@ -14,5 +14,7 @@ hola <%= @user_id %>
 
     	<!--<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %> -->
     	<%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }%>
+        <%= Kmflow::Pagos::nuevo orden: 123, concepto: 'Mi producto', monto: 5000, email: 'comprador@mail.cl' %>
+
 
 	<%end%>    
