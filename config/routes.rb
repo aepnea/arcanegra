@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   devise_for :customers
 
 
-<<<<<<< HEAD
+
   resources :in_shopping_carts, only: [:create,:destroy] 
   get "/in_shopping_carts", to: "in_shopping_carts#create"
-=======
-  resources :in_shopping_carts, only: [:create,:destroy]
->>>>>>> imagenes
+
+
 
   get "/carrito", to: "shopping_carts#show"
 
@@ -21,10 +20,7 @@ Rails.application.routes.draw do
   get 'home/whatwedo'
 
 
-<<<<<<< HEAD
-  
-=======
->>>>>>> imagenes
+
 
 
 #### SCOPE ADMIN

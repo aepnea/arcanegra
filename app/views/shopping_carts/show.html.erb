@@ -24,5 +24,10 @@
     <% end %>
   </tbody>
 </table>
-<%= @shopping_cart.total%>
+Total Carrito : <%= @shopping_cart.total%>
+<% if customer_signed_in?%>
+  <%= Kmflow::Pagos::nuevo orden: 123, concepto: 'Mi producto', monto: @shopping_cart.total , email: @user %>
+<%else%>
+  <%= button_to "Pagar con Webpay", customer_session_path, method: :post %>
+<%end%>
 <br>
