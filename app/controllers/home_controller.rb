@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-  	@artist_random = Artist.order("RAND()").first(1)
+  	@artist_random = Artist.order("RAND()").uniq.first(1)
 	  @product_random = Product.order("RAND()").first(5)
 
 ### guardando customer id en una cookie  
