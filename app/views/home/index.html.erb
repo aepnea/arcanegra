@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>ArcaNegra</h1>
-hola <%= @user_id %>
-
-    <% @artist_random.each do |a|  %>
+<%if customer_signed_in?%>
+   Hola  <%= current_customer.email %>
+<%end%>
+    <p><% @artist_random.each do |a|  %>
  	   <%= a.firstname %>
     <%end%>
     <% @product_random.each do |p|%>
@@ -14,6 +15,6 @@ hola <%= @user_id %>
 
     	<!--<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %> -->
     	<%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }%>
-
+        </p>
 
 	<%end%>    
