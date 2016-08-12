@@ -26,8 +26,10 @@
 </table>
 Total Carrito : <%= @shopping_cart.total%>
 <% if customer_signed_in?%>
-  <%= Kmflow::Pagos::nuevo orden: 123, concepto: 'Mi producto', monto: @shopping_cart.total , email: @user %>
+  <% cart_id = cookies[:cart_id]%>
+  <%= Kmflow::Pagos::nuevo orden: cart_id , concepto: 'Mi producto', monto: @shopping_cart.total , email: @user %>
 <%else%>
-  <%= button_to "Pagar con Webpay", customer_session_path, method: :post %>
+  <p><%= link_to "Registrarse", new_customer_registration_path, method: :get %>        <%= link_to "Iniciar Sesión", customer_session_path, method: :post %>
+      </p>
 <%end%>
 <br>

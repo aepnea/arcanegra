@@ -12,10 +12,11 @@ private
 		store_location_for(:user, request.url)
 	end
 	
-  	def after_sign_out_path_for(resource)
-    	request.referrer || root_path
+  def after_sign_out_path_for(resource)
+   	request.referrer || root_path
  	end
   
+ 
 
   	def set_shopping_cart
   		### preguntando si el usuario tiene o no creado un carro

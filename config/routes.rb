@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get "/in_shopping_carts", to: "in_shopping_carts#create"
 
 
-
   get "/carrito", to: "shopping_carts#show"
 
   root 'home#index'

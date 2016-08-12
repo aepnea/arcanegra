@@ -13,7 +13,8 @@ class KmflowController < ApplicationController
   ## s : Datos encriptados con tu llave
   
   def flow_exito
-    
+    require 'pry'
+    binding.pry
   end
   
   def flow_fracaso
@@ -29,7 +30,9 @@ class KmflowController < ApplicationController
   ## verificar_respuesta : Confirma que antes que se ejecute cualquier página, existan los parámetros desde Flow
   protected
   def flow_confirma
+
     status = Kmflow::Pagos::read_confirm(params[:response])
+  
     if status['status'] == 'EXITO'
       Kmflow::Pagos::build_response(true)
     else
