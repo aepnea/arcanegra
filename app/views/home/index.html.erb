@@ -4,27 +4,30 @@
 <%if customer_signed_in?%>
    Hola  <%= current_customer.email %>
 <%end%>
-    <p><% @artist_random.each do |a|  %>
- 	   <%= a.firstname %>
-    <%end%>
+<div>
+  <% @artist_random.each do |a|  %>
+    <%= a.firstname %>
+  <%end%>
+</div>
+<div>
+  <ul>
     <% @product_random.each do |p|%>
-    	<%= p.name %>
-    	<%= p.short_description %>
-    	<%= p.price %>
+    <li>
+      <%= p.name %>
+      <%= p.short_description %>
+      <%= p.price %>
+      <ul>
+        <% p.images.limit(1).each do |image| %>
+          <li>
+            <%= image_tag image.archivo.url %>
+          </li>
+        <% end %>
+      </ul>
+      <!--<%= render "in_shopping_carts/form",product: @product_random%> -->
+      <!--<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %> -->
+      <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }%>
+    </li>
+    <%end%>
+  </ul>
 
-<ul>
-  <% p.images.each do |image| %>
-  <li>
-    <span><%= image_tag image.archivo.url %></span>
-    <%= image.archivo.url%>
-  </li>
-  <% end %>
-</ul>
-
-    	<!--<%= render "in_shopping_carts/form",product: @product_random%> -->
-
-    	<!--<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %> -->
-    	<%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }%>
-        </p>
-
-	<%end%>    
+</div>
