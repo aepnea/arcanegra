@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     @artist = Artist.all
     @product_type = ProductType.all
+
   end
 
   # GET /products/1

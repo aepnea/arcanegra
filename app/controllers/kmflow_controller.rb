@@ -13,8 +13,7 @@ class KmflowController < ApplicationController
   ## s : Datos encriptados con tu llave
   
   def flow_exito
-    require 'pry'
-    binding.pry
+
   end
   
   def flow_fracaso
