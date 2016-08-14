@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
     @products = Product.all
     @artist = Artist.all
     @product_type = ProductType.all
-      @image = Image.new
 
   end
 

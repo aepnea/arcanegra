@@ -30,9 +30,8 @@
         <td><%= product.sku %></td>
 
 
-        <%= render 'images/form', product_id: @product.id %>
 <ul>
-  <% @product.images.each do |image| %>
+  <% product.images.each do |image| %>
   <li>
     <span><%= image_tag image.archivo.url %></span>
     <span><%=  link_to "x", image, method: :delete %></span>
