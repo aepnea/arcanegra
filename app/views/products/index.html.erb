@@ -13,6 +13,7 @@
       <th>On sale</th>
       <th>Price</th>
       <th>SKU</th>
+      <th>img</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,17 +29,17 @@
         <td><%= product.on_sale %></td>
         <td><%= product.price %></td>
         <td><%= product.sku %></td>
-
-
-<ul>
-  <% product.images.each do |image| %>
-  <li>
-    <span><%= image_tag image.archivo.url %></span>
-    <span><%=  link_to "x", image, method: :delete %></span>
-    <%= image.archivo.url%>
-  </li>
-  <% end %>
-</ul>
+        <td>
+          <ul class="imgProdLi">
+            <% product.images.each do |image| %>
+            <li>
+              <span><%= image_tag image.archivo.url %></span>
+              <span><%=  link_to "x", image, method: :delete %></span>
+              <!-- <%= image.archivo.url%> -->
+            </li>
+            <% end %>
+          </ul>
+        </td>
 
 
         <td><%= link_to 'Show', product %></td>
