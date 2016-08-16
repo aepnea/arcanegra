@@ -3,20 +3,71 @@
 <head>
   <title>Arcanegra</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header nav--header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">
+          <%= link_to "Arca negra", root_path %>
+        </span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <% if customer_signed_in? %>
+          <nav class="mdl-navigation">
+            <%= link_to "home", root_path %>
+            <%= link_to "Artistas", home_artists_path %>
+            <%= link_to "Productos", home_products_path %>
+            <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %>
+            <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
+            <%= link_to carrito_path do%>
+              <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
+            <% end %>
+          </nav>
+        <%elsif admin_signed_in? %>
+          <nav class="mdl-navigation">
+            <%=link_to "Artistas", artists_path%>
+            <%=link_to "Productos", products_path%>
+            <%= link_to "Salir", destroy_admin_session_path, method: :delete %>
+            <%= link_to carrito_path do%>
+              <!-- <span>Mi Carrito</span> <span><%= @shopping_cart.products.size %></span> -->
+              <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
+            <% end %>
+          </nav>
+        <% else %>
+          <nav class="mdl-navigation">
+            <%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %>
+            <%= link_to "Productos", home_products_path %>
+            <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %>
+            <%=link_to "Login", new_customer_session_path %>
+            <%= link_to "Mi Carrito ", carrito_path%>
+            <%= @shopping_cart.products.size%>
+          </nav>
+        <%end%>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <%= yield %>
+    </main>
+  </div>
 
-<% if customer_signed_in? %>
- 	<%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %> <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
- <%= link_to "Mi Carrito ", carrito_path%> <%= @shopping_cart.products.size%> 
- <%elsif admin_signed_in? %>
- 	<%=link_to "Artistas", artists_path%> <%= link_to "Salir", destroy_admin_session_path, method: :delete %>
- <%else%>
-<%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %> <%=link_to "Login", new_customer_session_path %> <%= link_to "Mi Carrito ", carrito_path%> <%= @shopping_cart.products.size%>
- <%end%>
-<%= yield %>
-
+  <script type="text/javascript" data-turbolinks-eval=always>
+    componentHandler.upgradeDom();
+    console.log("I'm run on every page load, including history back/forward");
+  </script>
 </body>
 </html>
