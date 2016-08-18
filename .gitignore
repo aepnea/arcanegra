@@ -13,3 +13,5 @@ log/development.log
 config/database.yml
 
 log/kmflow.log
+
+config/database.yml
