@@ -14,14 +14,3 @@
  *= require_tree .
  *= require_self
  */
-
-
-.imgProdLi{
-  width:80px;
-}
-.imgProdLi li{
-  width: 100%;
-}
-.imgProdLi li img{
-  width: 100%
-}

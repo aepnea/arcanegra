@@ -24,6 +24,9 @@
             <%= link_to "Artistas", home_artists_path %>
             <%= link_to "Productos", home_products_path %>
             <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %>
+            <%= link_to destroy_admin_session_path, method: :delete do%>
+              <p class="current">Hola  <%= current_customer.email %> Salir</p>
+            <% end %>
             <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
             <%= link_to carrito_path do%>
               <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
@@ -33,9 +36,10 @@
           <nav class="mdl-navigation">
             <%=link_to "Artistas", artists_path%>
             <%=link_to "Productos", products_path%>
-            <%= link_to "Salir", destroy_admin_session_path, method: :delete %>
+            <%= link_to destroy_admin_session_path, method: :delete do%>
+              <p class="current">Hola <%= current_admin.email %> Salir</p>
+            <% end %>
             <%= link_to carrito_path do%>
-              <!-- <span>Mi Carrito</span> <span><%= @shopping_cart.products.size %></span> -->
               <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
             <% end %>
           </nav>
@@ -45,22 +49,30 @@
             <%= link_to "Productos", home_products_path %>
             <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %>
             <%=link_to "Login", new_customer_session_path %>
-            <%= link_to "Mi Carrito ", carrito_path%>
-            <%= @shopping_cart.products.size%>
+            <%= link_to carrito_path do%>
+              <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
+            <% end %>
           </nav>
         <%end%>
       </div>
     </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-      </nav>
-    </div>
+    <%if admin_signed_in? %>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+    <% end %>
     <main class="mdl-layout__content">
+      <div class="test">
+        <% @products.each do |p| %>
+          <%= p.name %>
+        <%end%>
+      </div>
       <%= yield %>
     </main>
   </div>

@@ -3,9 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_shopping_cart
+  before_action :show_cart_products
   before_filter :store_current_location, :unless => :devise_controller?
 
-
+  def show_cart_products
+    p_id = CartProduct.select(:product_id).where(cart_id: cookies[:cart_id])
+    @products = Product.where(id: p_id)
+  end
 private
 
 	def store_current_location
