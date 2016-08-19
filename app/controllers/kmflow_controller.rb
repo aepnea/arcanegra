@@ -29,7 +29,9 @@ class KmflowController < ApplicationController
   ## verificar_respuesta : Confirma que antes que se ejecute cualquier página, existan los parámetros desde Flow
   protected
   def flow_confirma
-
+logger.info "confirmande ####################"
+   logger.info params[:response]
+logger.info status
     status = Kmflow::Pagos::read_confirm(params[:response])
   
     if status['status'] == 'EXITO'
@@ -40,7 +42,10 @@ class KmflowController < ApplicationController
   end
   private
   def verificar_respuesta
-    resp = Kmflow::Pagos::verificar_respuesta(params[:response])
+   logger.info "verificando respuesta ################"
+   logger.info params[:response] 
+   resp = Kmflow::Pagos::verificar_respuesta(params[:response])
+logger.info resp
     if resp['response']
       @flow = resp['order']
     else

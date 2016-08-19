@@ -43,8 +43,8 @@ gem 'annotate'
 
 
 #### FLOW.CL
-
 gem 'kmflow'
+#gem 'kmflow', :git => "git://github.com/aepnea/kmflow.git"
 
 
 # paperclip
