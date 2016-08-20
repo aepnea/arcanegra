@@ -3,7 +3,7 @@ default: &default
   email_tienda : cvasquez@zaetachile.cl
 
   # Ruta de la llave pública descargada desde flow.cl
-  key_publica : flow_keys/
+  key_publica : flow_keys/flow.pubkey
 
 
   # Modo de acceso a webpay, valores posibles:
