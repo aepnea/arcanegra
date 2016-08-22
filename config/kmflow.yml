@@ -26,7 +26,7 @@ default: &default
 development:
   <<: *default
   # La URL de tu sitio en modo desarrollo, por default localhost
-  url : http://localhost:3000
+  url : http://198.58.126.227:3000
 
   # Ruta de tu llave privada de comercio en desarrollo
   key_privada : flow_keys/comercio.pem

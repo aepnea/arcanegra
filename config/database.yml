@@ -3,8 +3,12 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: "root"
-  socket: /tmp/mysql.sock
+### dev
+  password: "nodriza.01"
+  socket: /var/lib/mysql/mysql.sock
+####mac
+  #password: "root"
+  #socket: /tmp/mysql.sock
 
 development:
   <<: *default
