@@ -18,7 +18,7 @@ class KmflowController < ApplicationController
 
     orden = Order.new(:cart_id => @flow['kfp_orden'] , :customer_id => current_customer, :order_status_id => '1', :payment_status_id => '5')
     orden.save
-    reset_session
+    cookies.delete :cart_id
 
   end
 
