@@ -17,6 +17,8 @@ class KmflowController < ApplicationController
 ### cambiar order_status y payment_status por los valores que corresponde en el modelo
 
     orden = Order.new(:cart_id => @flow['kfp_orden'] , :customer_id => current_customer, :order_status_id => '1', :payment_status_id => '5')
+    orden.save
+    reset_session
 
   end
 
