@@ -4,11 +4,11 @@ default: &default
   pool: 5
   username: root
 ### dev
-  password: "nodriza.01"
-  socket: /var/lib/mysql/mysql.sock
+#  password: "nodriza.01"
+#  socket: /var/lib/mysql/mysql.sock
 ####mac
-  #password: "root"
-  #socket: /tmp/mysql.sock
+  password: "root"
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default

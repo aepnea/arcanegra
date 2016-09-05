@@ -59,3 +59,16 @@ Product.create ([{product_type_id: '1', artist_id: '1', name: 'producto1', short
 				 {product_type_id: '7', artist_id: '1', name: 'producto7', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'EDJCORTI'}, \
 				 {product_type_id: '8', artist_id: '2', name: 'producto8', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'false', price: '9900', sku: 'IQQREBNG'}, \
 				 {product_type_id: '9', artist_id: '3', name: 'producto9', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'false', price: '9900', sku: 'FNSDRTNC'} ])
+
+OrderStatus.create ([{status: "Recivido"}, \
+	 									 {status: "Elaborándose en el Arca"}, \
+										 {status: "Viajando por los infinitos mares"}, \
+										 {status: "Entregado"}])
+PaymentType.create ([{name: "Transferencia"}, \
+										 {name: "Webpay"}])
+
+PaymentStatus.create ([{status: "No pagado", payment_type_id: '1'}, \
+											 {status: "Esperando confirmación", payment_type_id: '1'}, \
+											 {status: "Pagado", payment_type_id: '1'}, \
+											 {status: "No Pagado", payment_type_id: '2'}, \
+											 {status: "Pagado", payment_type_id: '2'} ])

@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/aepnea/kmflow.git
+  revision: e89c558199c39d93baf42666e82a92fdf6ab89e7
+  specs:
+    kmflow (0.1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -80,7 +86,6 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    kmflow (0.1.5)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -190,7 +195,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
-  kmflow
+  kmflow!
   meta_request
   mysql2 (>= 0.3.13, < 0.5)
   paperclip
