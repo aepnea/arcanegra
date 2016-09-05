@@ -43,9 +43,15 @@ gem 'annotate'
 
 
 #### FLOW.CL
+<<<<<<< HEAD
 
 #gem 'kmflow'
 gem 'kmflow', :git => "git://github.com/aepnea/kmflow.git"
+=======
+gem 'kmflow'
+#gem 'kmflow', :git => "git://github.com/aepnea/kmflow.git"
+
+>>>>>>> master
 
 # paperclip
 gem 'paperclip'
