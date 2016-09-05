@@ -16,7 +16,7 @@ class KmflowController < ApplicationController
   def flow_exito
 ### cambiar order_status y payment_status por los valores que corresponde en el modelo
 
-    orden = Order.new(:cart_id => @flow['kfp_orden'] , :customer_id => current_customer, :order_status => 1, :payment_status => 1)
+    orden = Order.new(:cart_id => @flow['kfp_orden'] , :customer_id => current_customer, :order_status_id => '1', :payment_status_id => '5')
 
   end
 
