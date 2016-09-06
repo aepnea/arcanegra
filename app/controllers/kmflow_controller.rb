@@ -1,7 +1,7 @@
 
 class KmflowController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:flow_fracaso, :flow_exito, :flow_confirma]
-  before_action :verificar_respuesta, only: [:flow_exito, :flow_fracaso, :flow_confirma]
+  before_action :verificar_respuesta, only: [:flow_exito, :flow_fracaso, :flow_confirma], :set_shopping_cart
 
   ## La página de éxito te sirve para poner agregar los datos a tu base de datos
   ## tienes la variable @flow con todos los datos de la orden
