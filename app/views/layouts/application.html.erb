@@ -9,7 +9,6 @@
 <body>
 
 <% if customer_signed_in? %>
-<%= current_customer.id %>
  	<%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %> <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
  <%= link_to "Mi Carrito ", carrito_path%> <%= @shopping_cart.products.size%>
  <%elsif admin_signed_in? %>
