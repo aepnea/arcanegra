@@ -3,20 +3,81 @@
 <head>
   <title>Arcanegra</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="mdl-layout mdl-js-layout">
+    <div class="row-cart">
+      <div class="container-cart mdl-layout__header-row">
+        <div class="social mdl-layout-title">
+          <p>f    .    t</p>
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <% if customer_signed_in? %>
+          <%= link_to destroy_admin_session_path, method: :delete do%>
+            <p class="current">Hola  <%= current_customer.email %> Salir</p>
+          <% end %>
+          <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
+        <% elsif admin_signed_in? %>
+          <%= link_to destroy_admin_session_path, method: :delete do%>
+            <p class="current">Hola <%= current_admin.email %> Salir</p>
+          <% end %>
+        <% else %>
+          <%=link_to "Login", new_customer_session_path, :class => "login" %>
+        <% end %>
+        <%= link_to carrito_path, :class => "link-carrito" do%>
+          <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
+        <% end %>
 
-<% if customer_signed_in? %>
- 	<%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %> <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
- <%= link_to "Mi Carrito ", carrito_path%> <%= @shopping_cart.products.size%>
- <%elsif admin_signed_in? %>
- 	<%=link_to "Artistas", artists_path%> <%= link_to "Salir", destroy_admin_session_path, method: :delete %>
- <%else%>
-<%= link_to "home", root_path %> <%= link_to "Artistas", home_artists_path %> <%= link_to "Productos", home_products_path %> <%= link_to "¿Quienes Somos? / ¿Qué hacemos?", root_path %> <%=link_to "Login", new_customer_session_path %> <%= link_to "Mi Carrito ", carrito_path%> <%= @shopping_cart.products.size%>
- <%end%>
-<%= yield %>
+      </div>
+    </div>
+    <header>
+      <div class="container-header">
+        <!-- Title -->
+        <span class="mdl-layout-title brand-header">
+          <%= link_to root_path do %>
+            <%= image_tag("logo.png", :class => "logo") %>
+          <% end %>
+        </span>
+        <nav class="mdl-navigation">
+          <span class="underline-style">
+            <%= link_to "¿Qué hacemos?", root_path %>
+          </span>
+          <span class="underline-style">
+            <%= link_to "Artistas", artists_path%>
+          </span>
+          <span class="underline-style">
+            <%= link_to "Productos", home_products_path %>
+          </span>
+        </nav>
+      </div>
+    </header>
+    <%if admin_signed_in? %>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+    <% end %>
+    <main>
+      <div class="test">
+        <% @products.each do |p| %>
+          <%= p.name %>
+        <%end%>
+      </div>
+      <%= yield %>
+    </main>
+  </div>
 
+  <script type="text/javascript" data-turbolinks-eval=always>
+    componentHandler.upgradeDom();
+    console.log("I'm run on every page load, including history back/forward");
+  </script>
 </body>
 </html>

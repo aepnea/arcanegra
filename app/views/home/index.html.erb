@@ -1,30 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <h1>ArcaNegra</h1>
-<%if customer_signed_in?%>
-   Hola  <%= current_customer.email %>
-<%end%>
-    <p><% @artist_random.each do |a|  %>
- 	   <%= a.firstname %>
-    <%end%>
-    <% @product_random.each do |p|%>
-    	<%= p.name %>
-    	<%= p.short_description %>
-    	<%= p.price %>
+<div class="mdl-grid">
+  <% @product_random.each do |p|%>
+    <div class="mdl-cell mdl-cell--3-col">
+      <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand background-cover" style="background:url('<% p.images.limit(1).each do |image| %> <%= image.archivo.url %> <% end %>')">
+          <h2 class="mdl-card__title-text"><%= p.name %></h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <%= p.short_description %>
+          <h2 class="mdl-card__title-text darken-4"><%= p.price %></h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }, :class => "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>
 
-<ul>
-  <% p.images.each do |image| %>
-  <li>
-    <span><%= image_tag image.archivo.url %></span>
-    <%= image.archivo.url%>
-  </li>
-  <% end %>
-</ul>
-
-    	<!--<%= render "in_shopping_carts/form",product: @product_random%> -->
-
-    	<!--<%=  link_to "agregar al carrito", in_shopping_carts_path(product_id: p.id), method: :post %> -->
-    	<%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }%>
-        </p>
-
-	<%end%>    
+<div>
+  <% @artist_random.each do |a|  %>
+    <%= a.firstname %>
+  <%end%>
+</div>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help

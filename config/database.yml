@@ -7,7 +7,7 @@ default: &default
 #  password: "nodriza.01"
 #  socket: /var/lib/mysql/mysql.sock
 ####mac
-  password: "root"
+  password: ""
   socket: /tmp/mysql.sock
 
 development:

@@ -1,0 +1,107 @@
+@font-face
+  font-family: 'nexa-black1'
+  src: url('/assets/nexa-black1.eot')
+  src: url('/assets/nexa-black1.woff2') format('woff2'),url('/assets/nexa-black1.woff') format('woff'),url('/assets/nexa-black1.svg#nexa_rust_sansblack_01') format('svg')
+
+@font-face
+  font-family: 'nexa-black2'
+  src: url('/assets/nexa-black2.eot')
+  src: url('/assets/nexa-black2.woff2') format('woff2'),url('/assets/nexa-black2.woff') format('woff'),url('/assets/nexa-black2.svg#nexa_rust_sansblack_shadow') format('svg')
+
+@font-face
+  font-family: 'nexa'
+  src: url('/assets/nexa-book.eot')
+  src: url('/assets/nexa-book.woff2') format('woff2'),url('/assets/nexa-book.woff') format('woff'),url('/assets/nexa-book.svg#nexa_rust_sansbook') format('svg')
+
+// variables de color
+$lila: #A50450
+
+*
+  box-sizing: border-box
+  -webkit-font-smoothing: antialiased
+
+h1,
+h2
+  margin: 0
+header
+  background: rgba(white, .8)
+  box-shadow: 0 3px 6px rgba(black, .16)
+  height: 155px
+  padding: 10px 0
+.background-cover
+  background-size: cover !important
+  background-position: center !important
+  background-repeat: no-repeat
+  height: 200px
+.brand-header
+  display: block
+  font-size: 0
+  text-align: center
+  width: 100%
+  .logo
+    width: 250px
+.cart
+  color: $lila
+  font-size: 34px !important
+  &::after
+    background-color: white !important
+    border: 2px solid $lila
+    color: $lila !important
+    right: -15px !important
+    top: -4px !important
+.container-header
+  margin: 0 auto
+  max-width: 1010px
+  width: 100%
+.current
+  margin: 0
+.darken-4
+  color: #b71c1c
+.link-carrito
+  display: block
+  height: 34px
+.login
+  background: $lila
+  border-radius: 5px
+  color: white
+  display: block
+  font-family: "nexa-black1"
+  margin-right: 25px
+  padding: 7px 39px
+  transition: .25s
+  &:hover
+    transform: scale(1.1)
+.mdl-layout__header-row
+  height: initial
+.mdl-navigation
+  display: block
+  text-align: center
+  .underline-style
+    //color: white
+    display: inline-block
+    padding: 5px 0
+    //text-decoration: underline
+    &:hover
+      //text-decoration: underline
+      a
+        border-bottom: 2px solid $lila
+    a
+      border-bottom: 2px solid transparent
+      color: #28292E
+      display: block
+      font-family: "nexa"
+      text-decoration: none
+      transition: .35s
+.nav--header
+  background-color: rgba(black, .7)
+.mdl-navigation
+  a
+    margin: 0 1rem
+.row-cart
+  background: #D5D5D5
+  //height: 44px
+  padding: 5px 0
+  .container-cart
+    margin: 0 auto
+    max-width: 1010px
+    width: 100%

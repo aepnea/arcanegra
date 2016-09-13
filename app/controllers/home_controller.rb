@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
   	@artist_random = Artist.order("RAND()").uniq.first(1)
-	  @product_random = Product.order("RAND()").first(5)
+	  @product_random = Product.order("RAND()").first(4)
 
 ### guardando customer id en una cookie
 #   if customer_signed_in?
@@ -27,7 +27,6 @@ class HomeController < ApplicationController
   	@polera = Product.where(product_type: '8')
   	@poleron = Product.where(product_type: '9')
   	@almohada = Product.where(product_type: '10')
-
   end
 
   def whatwedo
