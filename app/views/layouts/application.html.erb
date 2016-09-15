@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Arcanegra</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" media="screen" title="no title">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -25,7 +26,7 @@
             <p class="current">Hola <%= current_admin.email %> Salir</p>
           <% end %>
         <% else %>
-          <%=link_to "Login", new_customer_session_path, :class => "login" %>
+          <%=link_to "Entrar", new_customer_session_path, :class => "login" %>
         <% end %>
         <%= link_to carrito_path, :class => "link-carrito" do%>
           <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
@@ -33,27 +34,60 @@
 
       </div>
     </div>
-    <header>
-      <div class="container-header">
-        <!-- Title -->
-        <span class="mdl-layout-title brand-header">
-          <%= link_to root_path do %>
-            <%= image_tag("logo.png", :class => "logo") %>
-          <% end %>
-        </span>
-        <nav class="mdl-navigation">
-          <span class="underline-style">
-            <%= link_to "¿Qué hacemos?", root_path %>
-          </span>
-          <span class="underline-style">
-            <%= link_to "Artistas", artists_path%>
-          </span>
-          <span class="underline-style">
-            <%= link_to "Productos", home_products_path %>
-          </span>
-        </nav>
+    <% if current_page?(root_path) %>
+      <div class="hero">
+        <header>
+          <div class="container-header">
+            <!-- Title -->
+            <span class="mdl-layout-title brand-header">
+              <%= link_to root_path do %>
+              <%= image_tag("logo.png", :class => "logo") %>
+              <% end %>
+            </span>
+            <nav class="mdl-navigation">
+              <span class="underline-style">
+                <%= link_to "¿Qué hacemos?", root_path %>
+              </span>
+              <span class="underline-style">
+                <%= link_to "Artistas", artists_path%>
+              </span>
+              <span class="underline-style">
+                <%= link_to "Productos", home_products_path %>
+              </span>
+            </nav>
+          </div>
+        </header>
+        <div class="call-to-in-header">
+          <h2>Un texto hermoso</h2>
+          <h2>Para un gran impacto</h2>
+          <div class="click-me">
+            <a class="button-click-me" href="#">descubre como</a>
+          </div>
+        </div>
       </div>
-    </header>
+    <% else %>
+      <header>
+        <div class="container-header">
+          <!-- Title -->
+          <span class="mdl-layout-title brand-header">
+            <%= link_to root_path do %>
+              <%= image_tag("logo.png", :class => "logo") %>
+            <% end %>
+          </span>
+          <nav class="mdl-navigation">
+            <span class="underline-style">
+              <%= link_to "¿Qué hacemos?", root_path %>
+            </span>
+            <span class="underline-style">
+              <%= link_to "Artistas", artists_path%>
+            </span>
+            <span class="underline-style">
+              <%= link_to "Productos", home_products_path %>
+            </span>
+          </nav>
+        </div>
+      </header>
+    <% end %>
     <%if admin_signed_in? %>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Title</span>

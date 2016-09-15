@@ -15,6 +15,7 @@
 
 // variables de color
 $lila: #A50450
+$principal: #28292E
 
 *
   box-sizing: border-box
@@ -49,6 +50,33 @@ header
     color: $lila !important
     right: -15px !important
     top: -4px !important
+.call-to-in-header
+  margin: 0 auto
+  max-width: 1010px
+  padding-top: 220px
+  width: 100%
+  h2
+    color: white
+    font-family: 'nexa-black1'
+    font-size: 50px
+    text-shadow: 0 8px 5px rgba(black, .5)
+    width: 75%
+.click-me
+  display: block
+  margin-top: 8px
+  padding: 20px 0
+  .button-click-me
+    background: $principal
+    border-radius: 5px
+    color: white
+    display: inline-block
+    font-family: 'nexa-black1'
+    font-size: 22px
+    padding: 16px 10px
+    text-decoration: none
+    transition: .25s
+    &:hover
+      transform: scale(1.1)
 .container-header
   margin: 0 auto
   max-width: 1010px
@@ -57,6 +85,21 @@ header
   margin: 0
 .darken-4
   color: #b71c1c
+.hero
+  background: $principal url('/assets/background.jpg') center / cover
+  background-repeat: no-repeat
+  display: flex
+  height: 100vh
+  min-height: 430px
+  position: relative
+  width: 100%
+  header
+    height: 155px
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    width: 100%
 .link-carrito
   display: block
   height: 34px
