@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Arcanegra</title>
-  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css" media="screen" title="no title">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -17,16 +16,17 @@
         </div>
         <div class="mdl-layout-spacer"></div>
         <% if customer_signed_in? %>
-          <%= link_to destroy_admin_session_path, method: :delete do%>
-            <p class="current">Hola  <%= current_customer.email %> Salir</p>
+          <p class="name-header">Hola  <%= current_customer.email %> </p>
+          <%= link_to destroy_customer_session_path, method: :delete do%>
+            <p class="current">Salir</p>
           <% end %>
-          <%= link_to "Salir", destroy_customer_session_path, method: :delete %>
         <% elsif admin_signed_in? %>
+          <p class="name-header">Hola <%= current_admin.email %> </p>
           <%= link_to destroy_admin_session_path, method: :delete do%>
-            <p class="current">Hola <%= current_admin.email %> Salir</p>
+            <p class="current">Salir</p>
           <% end %>
         <% else %>
-          <%=link_to "Entrar", new_customer_session_path, :class => "login" %>
+          <%=link_to "Entrar", new_customer_session_path, :class => "login mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
         <% end %>
         <%= link_to carrito_path, :class => "link-carrito" do%>
           <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
@@ -46,10 +46,10 @@
             </span>
             <nav class="mdl-navigation">
               <span class="underline-style">
-                <%= link_to "¿Qué hacemos?", root_path %>
+                <%= link_to "¿Qué hacemos?", home_whatwedo_path %>
               </span>
               <span class="underline-style">
-                <%= link_to "Artistas", artists_path%>
+                <%= link_to "Artistas", home_artists_path%>
               </span>
               <span class="underline-style">
                 <%= link_to "Productos", home_products_path %>
@@ -63,6 +63,7 @@
           <div class="click-me">
             <a class="button-click-me" href="#">descubre como</a>
           </div>
+          <i class="material-icons">expand_more</i>
         </div>
       </div>
     <% else %>
@@ -90,28 +91,28 @@
     <% end %>
     <%if admin_signed_in? %>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title admin-title">Menu Admin</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+          <%= link_to "Productos", products_path, :class => "mdl-navigation__link" %>
+          <%= link_to "Artistas", artists_path, :class => "mdl-navigation__link" %>
         </nav>
       </div>
     <% end %>
     <main>
-      <div class="test">
+      <!-- <div class="test">
         <% @products.each do |p| %>
           <%= p.name %>
         <%end%>
+      </div> -->
+      <div class="row-container">
+        <%= yield %>
       </div>
-      <%= yield %>
     </main>
-  </div>
+    <footer class="mdl-mega-footer">
+      <div class="mdl-mega-footer__middle-section footer">
 
-  <script type="text/javascript" data-turbolinks-eval=always>
-    componentHandler.upgradeDom();
-    console.log("I'm run on every page load, including history back/forward");
-  </script>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

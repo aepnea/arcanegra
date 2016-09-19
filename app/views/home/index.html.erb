@@ -1,29 +1,68 @@
-<p id="notice"><%= notice %></p>
+<h2 class="title mdl-cell--8-col">Que hacemos</h2>
+<div class="mdl-grid what-we-do">
+  <div class="mdl-cell mdl-cell--4-col">
+    <figure class="steps">
+      <img src="/assets/no-cont.png" alt="sin contenido aun" />
+      <figcaption>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </figcaption>
+    </figure>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col">
+    <figure class="steps">
+      <img src="/assets/no-cont.png" alt="sin contenido aun" />
+      <figcaption>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </figcaption>
+    </figure>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col">
+    <figure class="steps">
+      <img src="/assets/no-cont.png" alt="sin contenido aun" />
+      <figcaption>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </figcaption>
+    </figure>
+  </div>
+</div>
 
-<h1>ArcaNegra</h1>
-<div class="mdl-grid">
+<h2 class="title mdl-cell--8-col">Como lo hacemos</h2>
+<div class="mdl-grid what-we-do how-we-do">
+  <div class="mdl-cell mdl-cell--8-col">
+    <figure class="steps">
+      <img src="/assets/no-cont.png" alt="sin contenido aun" />
+      <figcaption>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="mdl-grid big-margin-bottom">
   <% @product_random.each do |p|%>
-    <div class="mdl-cell mdl-cell--3-col">
-      <div class="mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title mdl-card--expand background-cover" style="background:url('<% p.images.limit(1).each do |image| %> <%= image.archivo.url %> <% end %>')">
-          <h2 class="mdl-card__title-text"><%= p.name %></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          <%= p.short_description %>
-          <h2 class="mdl-card__title-text darken-4"><%= p.price %></h2>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }, :class => "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
-        </div>
+    <div class="mdl-cell mdl-cell--3-col product-home" itemscope itemtype="http://schema.org/Product">
+      <p class="short-description-home"><%= p.short_description %></p>
+      <% p.images.limit(1).each do |img| %>
+        <%= image_tag img.archivo.url, itemprop: "image" %>
+      <% end %>
+      <h3 itemprop="name"><%= p.name %></h3>
+      <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span itemprop="price"><%= p.price %></span>
+      </div>
+
+      <div class="mdl-card__actions add-to-cart-row">
+        <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"%>
       </div>
     </div>
-  <%end%>
+  <% end %>
 </div>
 
-<div>
-  <% @artist_random.each do |a|  %>
-    <%= a.firstname %>
-  <%end%>
+<h2 class="title mdl-cell--8-col">Alguien debia hacerlo, y lo hacemos con gusto</h2>
+<div class="mdl-grid what-we-do">
+  <div class="mdl-cell mdl-cell--8-col">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </div>
 </div>
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help

@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Carrito de Compra</h1>
+<h1 class="title mdl-cell--8-col">Carrito de Compra</h1>
 
-<table>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable table-cart">
   <thead>
     <tr>
       <th>Producto</th>
       <th>Precio</th>
       <th>Acciones</th>
-      <th colspan="3"></th>
+      <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
 
@@ -19,16 +19,25 @@
         <td><%= product.name %></td>
         <td><%= product.price %></td>
         <td><%= link_to "Eliminar", in_shopping_cart_path(id: i_sh.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      
+
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        Total Carrito : <%= @shopping_cart.total%>
+      </td>
+    </tr>
+  </tfoot>
 </table>
-Total Carrito : <%= @shopping_cart.total%>
 <% if customer_signed_in?%>
   <% cart_id = cookies[:cart_id]%>
   <%= Kmflow::Pagos::nuevo orden: cart_id , concepto: 'Mi producto', monto: @shopping_cart.total , email: @user %>
 <%else%>
+  <h2 class="title-medium mdl-cell--8-col">necesitas logearte para seguir con la compra</h2>
   <p><%= link_to "Registrarse", new_customer_registration_path, method: :get %>        <%= link_to "Iniciar Sesión", customer_session_path, method: :post %>
       </p>
 <%end%>
