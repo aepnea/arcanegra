@@ -257,6 +257,15 @@ header
     display: block
     margin: 0 auto
     width: 90%
+.product-index-img
+  margin: 0
+  padding: 0
+  width: 100px
+  li
+    margin: 0
+    padding: 0
+    img
+      width: 100%
 .row-cart
   background: $principal
   //height: 44px
@@ -334,3 +343,8 @@ header
     transform: scale3d(1.05, 1.05, 1.05)
   to
     transform: scale3d(1, 1, 1)
+
+// responsive
+@media screen and (max-width: 1024px)
+  .mdl-layout__drawer-button
+    color: white

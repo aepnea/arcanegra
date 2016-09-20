@@ -11,7 +11,6 @@ $(document).on "turbolinks:load turbolinks:fetch ready", ()->
       console.log('clock 1')
       $('.short-description-home').removeClass('activo')
       $(this).find('.short-description-home').addClass('activo')
-
       console.log('clock')
       $(window).on "click", ->
         $('.short-description-home').removeClass('activo')
