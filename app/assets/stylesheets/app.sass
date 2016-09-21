@@ -28,6 +28,7 @@ $principal: #28292E
   -webkit-font-smoothing: antialiased
 body
   background: url('/assets/back.jpg') center / cover
+  background-attachment: fixed
   font-family: "nexa"
 footer
   background: url('/assets/footer.svg') center top / cover
@@ -89,9 +90,11 @@ header
     right: -15px !important
     top: -4px !important
 .call-to-in-header
+  align-items: center
+  display: flex
   margin: 0 auto
   max-width: 1010px
-  padding-top: 210px
+  //padding-top: 210px
   position: relative
   width: 100%
   h2
@@ -102,13 +105,15 @@ header
     width: 75%
   i
     animation: pulse 1.5s linear infinite
-    bottom: 16px
+    bottom: 45px
     color: white
     font-size: 44px
     left: 50%
     position: absolute
     text-shadow: 0 3px 5px rgba(black, .5)
     transform: translateX(-50%)
+  .call-to-real-action
+    width: 100%
 .click-me
   display: block
   margin-top: 8px
