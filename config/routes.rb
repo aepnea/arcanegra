@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
 
 
-  resources :in_shopping_carts, only: [:create,:destroy] 
+  resources :in_shopping_carts, only: [:create,:destroy]
+  resources :product_types, only: [:show]
   get "/in_shopping_carts", to: "in_shopping_carts#create"
 
 
@@ -53,8 +54,8 @@ Rails.application.routes.draw do
         resources :artists
         resources :cities
         resources :states
-        resources :product_types
-        resources :product_types
+        resources :product_types, only: [:create,:destroy,:new,:edit]
+        #resources :product_types
         resources :products
       end
     end
