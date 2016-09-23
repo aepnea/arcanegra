@@ -28,16 +28,17 @@ State.create([{name: 'Región de Arica y Parinacota'}, \
 
 ## tipos de producto
 
-ProductType.create ([{name: 'tazas'}, \
-					 {name: 'taza con platillo'}, \
+ProductType.create ([{name: 'mug'}, \
+					 {name: 'juego de taza'}, \
 					 {name: 'plato'}, \
 					 {name: 'carcaza celular'}, \
-					 {name: 'carcaza tablet'}, \
-					 {name: 'cortina de baño'}, \
+#					 {name: 'carcaza tablet'}, \
+#					 {name: 'cortina de baño'}, \
 					 {name: 'lienzo'}, \
 					 {name: 'polera'}, \
 					 {name: 'poleron'}, \
-					 {name: 'almohada'}])
+					 {name: 'almohada'}
+					 {name: 'zapatillas'}])
 
 
 
