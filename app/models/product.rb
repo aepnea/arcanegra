@@ -26,5 +26,6 @@ class Product < ActiveRecord::Base
   has_many :carts
   has_many :carts, :through => :cart_product, autosave: true, :dependent => :destroy
 
+  has_many :product_attribute, :through => :product_product_attribute, autosave: true, :dependent => :destroy
 
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers
 
 
@@ -56,6 +57,8 @@ Rails.application.routes.draw do
         resources :states
         resources :product_types, only: [:create,:destroy,:new,:edit]
         #resources :product_types
+        resources :product_product_attributes
+        resources :product_attributes
         resources :products
       end
     end

@@ -1,0 +1,1 @@
+json.array! @product_product_attributes, partial: 'product_product_attributes/product_product_attribute', as: :product_product_attribute
