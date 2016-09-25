@@ -15,6 +15,8 @@ class ProductProductAttributesController < ApplicationController
   # GET /product_product_attributes/new
   def new
     @product_product_attribute = ProductProductAttribute.new
+    @product = Product.all
+    @product_attribute = ProductAttribute.all
   end
 
   # GET /product_product_attributes/1/edit

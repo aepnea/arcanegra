@@ -13,11 +13,15 @@
 
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.number_field :product_id %>
+    <!--<%= f.number_field :product_id %> -->
+    <%= f.collection_select :product_id, @product, :id, :name %>
+
   </div>
   <div class="field">
     <%= f.label :product_attribute_id %><br>
-    <%= f.number_field :product_attribute_id %>
+    <!--<%= f.number_field :product_attribute_id %>-->
+    <%= f.collection_select :product_attribute_id, @product_attribute, :id, :name %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
