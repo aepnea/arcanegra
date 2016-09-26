@@ -41,10 +41,10 @@
 
 <div class="mdl-grid big-margin-bottom">
   <% @product_random.each do |p|%>
-  
+
   <!-- agrego el link_to al div de producto -->
 
-  <%= link_to root_path do %>
+  <%= link_to home_product_sheet_path do %>
     <div class="mdl-cell mdl-cell--3-col product-home" itemscope itemtype="http://schema.org/Product">
       <p class="short-description-home"><%= p.short_description %></p>
       <% p.images.limit(1).each do |img| %>

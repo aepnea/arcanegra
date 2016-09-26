@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'home/products'
 
   get 'home/whatwedo'
+  get 'home/product_sheet'
 
 
 
