@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @product_id.name%></p>
+
+<p><%= @product_id.price%></p>
+
+<p><%= @product_id.short_description%></p>
+
+<p><%= @product_id.description%></p>
+<p><% @product_id.images.limit(1).each do |img| %>
+  <%= image_tag img.archivo.url, itemprop: "image" %>
+<% end %>
+</p>
+  <p><%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => @product_id.id }, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"%></p>
+<p>
+  <%= link_to 'Back', root_path %>
+</p>
