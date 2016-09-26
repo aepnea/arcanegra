@@ -5,6 +5,8 @@ class ProductAttributesController < ApplicationController
   # GET /product_attributes.json
   def index
     @product_attributes = ProductAttribute.all
+    @product_type = ProductType.all
+
   end
 
   # GET /product_attributes/1
@@ -15,6 +17,7 @@ class ProductAttributesController < ApplicationController
   # GET /product_attributes/new
   def new
     @product_attribute = ProductAttribute.new
+    @product_type = ProductType.all
   end
 
   # GET /product_attributes/1/edit
@@ -69,6 +72,6 @@ class ProductAttributesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_attribute_params
-      params.require(:product_attribute).permit(:name, :value)
+      params.require(:product_attribute).permit(:name, :value, :product_type_id)
     end
 end

@@ -37,7 +37,7 @@ ProductType.create ([{name: 'mug'}, \
 					 {name: 'lienzo'}, \
 					 {name: 'polera'}, \
 					 {name: 'poleron'}, \
-					 {name: 'almohada'}
+					 {name: 'almohada'}, \
 					 {name: 'zapatillas'}])
 
 

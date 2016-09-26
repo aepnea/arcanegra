@@ -19,6 +19,10 @@
     <%= f.label :value %><br>
     <%= f.text_field :value %>
   </div>
+  <div class="field">
+    <%= f.label :product_type_id %><br>
+    <%= f.collection_select :product_type_id, @product_type, :id, :name %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
