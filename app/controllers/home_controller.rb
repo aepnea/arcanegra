@@ -29,6 +29,10 @@ class HomeController < ApplicationController
     @almohada = Product.where(product_type: '10')
     @product_types = ProductType.all
   end
+  
+  def product_sheet
+
+  end
 
   def whatwedo
   end
