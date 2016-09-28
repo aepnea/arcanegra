@@ -30,6 +30,19 @@ class HomeController < ApplicationController
     @product_types = ProductType.all
   end
 
+  def product_sheet
+    @product_id = Product.find(params[:product_id])
+    ### trayendo nombre de artista
+      @artist_name = Artist.where(id: @product_id.artist_id)
+
+    ### trayendo productos del mismo artista
+    @product_random = Product.where(artist_id: @product_id.artist_id).order("RAND()").first(4)
+
+    ### trayendo atributos de product_type
+      p=@product_id.product_type_id
+      @product_attribute = ProductAttribute.where(product_type: p)
+  end
+
   def whatwedo
   end
 end

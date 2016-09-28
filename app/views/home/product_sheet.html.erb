@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @product_id.name%></p>
+
+<p><%= @product_id.price%></p>
+
+<p><%= @product_id.short_description%></p>
+
+<p><%= @product_id.description%></p>
+<p><% @product_id.images.limit(1).each do |img| %>
+  <%= image_tag img.archivo.url, itemprop: "image" %>
+<% end %>
+<!-- atributos de producto -->
+<%@product_attribute.each do |a|%>
+  <%=a.name%>
+  <%=a.value%>
+<%end%>
+
+</p>
+  <p><%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => @product_id.id }, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"%></p>
+<p>
+<!-- Otros productos del artista -->
+<!-- nombre del artista-->
+  <p>Otros productos de <%@artist_name.each do |a|%>
+                          <%= a.firstname %> <%= a.lastname %>
+                          <%end%></p>
+<!-- fin nombre de artista -->
+<!-- productos random del artista-->
+  <% @product_random.each do |p| %>
+
+  <%= link_to home_product_sheet_path(:product_id => p.id)  do %>
+    <div class="mdl-cell mdl-cell--3-col product-home" itemscope itemtype="http://schema.org/Product">
+      <p class="short-description-home"><%= p.short_description %></p>
+      <% p.images.limit(1).each do |img| %>
+        <%= image_tag img.archivo.url, itemprop: "image" %>
+      <% end %>
+      <h3 itemprop="name"><%= p.name %></h3>
+      <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span itemprop="price"><%= p.price %></span>
+
+      </div>
+<!-- boton carrito -->
+      <div class="mdl-card__actions add-to-cart-row">
+        <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"%>
+      </div>
+    </div>
+  <% end %>
+
+  </div>
+
+
+
+  <%end%>
+  <%= link_to 'Back', root_path %>
+</p>

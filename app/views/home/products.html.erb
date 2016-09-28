@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<table class="relative">
+<table>
   <thead>
     <tr>
       <th>Name</th>
@@ -112,6 +112,8 @@
     <% end %>
   </tbody>
 </table> -->
-<br>
-
-<%= link_to 'New Order status', new_order_status_path %>
+<%if admin_signed_in? %>
+  <div class="relative">
+    <%= link_to 'New Order status', new_order_status_path %>
+  </div>
+<% end %>
