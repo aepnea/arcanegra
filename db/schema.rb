@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925153108) do
+ActiveRecord::Schema.define(version: 20160930204957) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20160925153108) do
     t.string   "background_content_type", limit: 255
     t.integer  "background_file_size",    limit: 4
     t.datetime "background_updated_at"
+    t.string   "nickname",                limit: 255
   end
 
   add_index "artists", ["city_id"], name: "index_artists_on_city_id", using: :btree
