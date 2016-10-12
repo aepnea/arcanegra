@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers
 
 
 
-  resources :in_shopping_carts, only: [:create,:destroy] 
+  resources :in_shopping_carts, only: [:create,:destroy]
+  resources :product_types, only: [:show]
   get "/in_shopping_carts", to: "in_shopping_carts#create"
 
 
@@ -18,8 +20,40 @@ Rails.application.routes.draw do
 
   get 'home/whatwedo'
 
+#  get 'home/product_sheet'
 
 
+  #match 'home/product_sheet/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
+
+  match ':artist_id/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
+
+
+
+
+
+  #get "home/product_sheet"
+  #Home
+  #<%= link_to home_product_sheet_path(:product_id => p.id)  do %>
+  #product_sheet view
+  #<%= link_to home_product_sheet_path(:product_id => p.id)  do %>
+  #get "/product_sheet/:product_id", to: "home#product_sheet"
+  #<%= link_to product_sheet_path(:product_id => p.id) do%>
+  #<%= link_to product_sheet_path(:product_id => p.id)  do %>
+
+  #get '/:artist_id/:product_id/', to:  "home#product_sheet"
+#resources :home
+
+  ### prueba friendly_id
+  match 'home' => 'home#index', :as => :home, via: [:get, :post]
+
+  #resources :home do
+  #  member do
+  #    get :product_sheet
+  #  end
+  #end
+  #match ':controller(/:action(/:id))(.:format)', via: [:get, :post]
+
+### prueba friendly_id fin
 
 
 #### SCOPE ADMIN
@@ -53,8 +87,10 @@ Rails.application.routes.draw do
         resources :artists
         resources :cities
         resources :states
-        resources :product_types
-        resources :product_types
+        resources :product_types, only: [:create,:destroy,:new,:edit]
+        #resources :product_types
+        resources :product_product_attributes
+        resources :product_attributes
         resources :products
       end
     end

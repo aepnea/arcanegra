@@ -1,0 +1,1 @@
+json.partial! "product_product_attributes/product_product_attribute", product_product_attribute: @product_product_attribute

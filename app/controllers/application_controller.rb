@@ -28,9 +28,12 @@ private
     ### preguntando si el usuario tiene o no creado un carro
     if cookies[:cart_id].blank?
       #si no tiene se le crea uno
-      #@shopping_cart = Cart.create!(customer_id: current_customer.id, ip: request.remote_ip)
-      @shopping_cart = Cart.create!(ip: request.remote_ip)
-      cookies[:cart_id] = {:value => @shopping_cart.id, :expires => 24.hour.from_now}
+      if signed_in?
+        @shopping_cart = Cart.create!(customer_id: current_customer.id, ip: request.remote_ip)
+      else
+        @shopping_cart = Cart.create!(ip: request.remote_ip)
+      end
+      cookies[:cart_id] = {:value => @shopping_cart.id, :expires => 168.hour.from_now}
     else
       # si ya tiene uno se busca y se mete  a variable de clase
       @shopping_cart = Cart.find(cookies[:cart_id])

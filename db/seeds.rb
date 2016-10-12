@@ -28,16 +28,17 @@ State.create([{name: 'Región de Arica y Parinacota'}, \
 
 ## tipos de producto
 
-ProductType.create ([{name: 'tazas'}, \
-					 {name: 'taza con platillo'}, \
+ProductType.create ([{name: 'mug'}, \
+					 {name: 'juego de taza'}, \
 					 {name: 'plato'}, \
 					 {name: 'carcaza celular'}, \
-					 {name: 'carcaza tablet'}, \
-					 {name: 'cortina de baño'}, \
+#					 {name: 'carcaza tablet'}, \
+#					 {name: 'cortina de baño'}, \
 					 {name: 'lienzo'}, \
 					 {name: 'polera'}, \
 					 {name: 'poleron'}, \
-					 {name: 'almohada'}])
+					 {name: 'almohada'}, \
+					 {name: 'zapatillas'}])
 
 
 
@@ -46,9 +47,9 @@ ProductType.create ([{name: 'tazas'}, \
 ####
 
 ### Artistas de Prueba
-Artist.create ([{firstname: 'artista1', lastname:'artistaapellido1', short_description:'hola soy artista', description:'hola soy un artista la zorra', email:'artista@arcanegra.cl', web:'www.artista.cl', address:'calle artista casa 2' , country:'Chile', phone:'09238094' }])
-Artist.create ([{firstname: 'artista2', lastname:'artistaapellido2', short_description:'hola soy artista 2', description:'hola soy un artista la zorra 2', email:'artista2@arcanegra.cl', web:'www.artista2.cl', address:'calle artista casa 3' , country:'Chile', phone:'092380942' }])
-Artist.create ([{firstname: 'artista3', lastname:'artistaapellido3', short_description:'hola soy artista 3', description:'hola soy un artista la zorra 3', email:'artista3@arcanegra.cl', web:'www.artista3.cl', address:'calle artista casa 4' , country:'Chile', phone:'092380943' }])
+Artist.create ([{nickname: 'nickartista1', firstname: 'artista1', lastname:'artistaapellido1', short_description:'hola soy artista', description:'hola soy un artista la zorra', email:'artista@arcanegra.cl', web:'www.artista.cl', address:'calle artista casa 2' , country:'Chile', phone:'09238094' }])
+Artist.create ([{nickname: 'nickartista2', firstname: 'artista2', lastname:'artistaapellido2', short_description:'hola soy artista 2', description:'hola soy un artista la zorra 2', email:'artista2@arcanegra.cl', web:'www.artista2.cl', address:'calle artista casa 3' , country:'Chile', phone:'092380942' }])
+Artist.create ([{nickname: 'nickartista3', firstname: 'artista3', lastname:'artistaapellido3', short_description:'hola soy artista 3', description:'hola soy un artista la zorra 3', email:'artista3@arcanegra.cl', web:'www.artista3.cl', address:'calle artista casa 4' , country:'Chile', phone:'092380943' }])
 ###
 Product.create ([{product_type_id: '1', artist_id: '1', name: 'producto1', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '99000', sku: 'FEKPDBIL'}, \
 				 {product_type_id: '2', artist_id: '2', name: 'producto2', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'KMLYVJPD'}, \

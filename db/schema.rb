@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801195112) do
+ActiveRecord::Schema.define(version: 20161003040440) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20160801195112) do
     t.string   "background_content_type", limit: 255
     t.integer  "background_file_size",    limit: 4
     t.datetime "background_updated_at"
+    t.string   "nickname",                limit: 255
   end
 
   add_index "artists", ["city_id"], name: "index_artists_on_city_id", using: :btree
@@ -214,6 +215,14 @@ ActiveRecord::Schema.define(version: 20160801195112) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "product_attributes", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.integer  "product_type_id", limit: 4
+    t.string   "value",           limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "product_groups", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "short_description", limit: 255
@@ -222,6 +231,13 @@ ActiveRecord::Schema.define(version: 20160801195112) do
     t.integer  "price",             limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "product_product_attributes", force: :cascade do |t|
+    t.integer  "product_id",           limit: 4
+    t.integer  "product_attribute_id", limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "product_product_groups", force: :cascade do |t|
@@ -251,6 +267,7 @@ ActiveRecord::Schema.define(version: 20160801195112) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "sku",               limit: 255
+    t.string   "slug",              limit: 255
   end
 
   add_index "products", ["artist_id"], name: "index_products_on_artist_id", using: :btree

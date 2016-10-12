@@ -8,88 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="mdl-layout mdl-js-layout">
-    <div class="row-cart">
-      <div class="container-cart mdl-layout__header-row">
-        <div class="social mdl-layout-title">
-          <p>f    .    t</p>
-        </div>
-        <div class="mdl-layout-spacer"></div>
-        <% if customer_signed_in? %>
-          <p class="name-header">Hola  <%= current_customer.email %> </p>
-          <%= link_to destroy_customer_session_path, method: :delete do%>
-            <p class="current">Salir</p>
-          <% end %>
-        <% elsif admin_signed_in? %>
-          <p class="name-header">Hola <%= current_admin.email %> </p>
-          <%= link_to destroy_admin_session_path, method: :delete do%>
-            <p class="current">Salir</p>
-          <% end %>
-        <% else %>
-          <%=link_to "Entrar", new_customer_session_path, :class => "login mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
-        <% end %>
-        <%= link_to carrito_path, :class => "link-carrito" do%>
-          <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
-        <% end %>
-
-      </div>
-    </div>
-    <% if current_page?(root_path) %>
-      <div class="hero">
-        <header>
-          <div class="container-header">
-            <!-- Title -->
-            <span class="mdl-layout-title brand-header">
-              <%= link_to root_path do %>
-              <%= image_tag("logo.png", :class => "logo") %>
-              <% end %>
-            </span>
-            <nav class="mdl-navigation">
-              <span class="underline-style">
-                <%= link_to "¿Qué hacemos?", home_whatwedo_path %>
-              </span>
-              <span class="underline-style">
-                <%= link_to "Artistas", home_artists_path%>
-              </span>
-              <span class="underline-style">
-                <%= link_to "Productos", home_products_path %>
-              </span>
-            </nav>
-          </div>
-        </header>
-        <div class="call-to-in-header">
-          <h2>Un texto hermoso</h2>
-          <h2>Para un gran impacto</h2>
-          <div class="click-me">
-            <a class="button-click-me" href="#">descubre como</a>
-          </div>
-          <i class="material-icons">expand_more</i>
-        </div>
-      </div>
-    <% else %>
-      <header>
-        <div class="container-header">
-          <!-- Title -->
-          <span class="mdl-layout-title brand-header">
-            <%= link_to root_path do %>
-              <%= image_tag("logo.png", :class => "logo") %>
-            <% end %>
-          </span>
-          <nav class="mdl-navigation">
-            <span class="underline-style">
-              <%= link_to "¿Qué hacemos?", root_path %>
-            </span>
-            <span class="underline-style">
-              <%= link_to "Artistas", artists_path%>
-            </span>
-            <span class="underline-style">
-              <%= link_to "Productos", home_products_path %>
-            </span>
-          </nav>
-        </div>
-      </header>
-    <% end %>
-    <%if admin_signed_in? %>
+  <%if admin_signed_in? %>
+    <div class="mdl-layout mdl-js-layout">
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title admin-title">Menu Admin</span>
         <nav class="mdl-navigation">
@@ -97,22 +17,105 @@
           <%= link_to "Artistas", artists_path, :class => "mdl-navigation__link" %>
         </nav>
       </div>
-    <% end %>
-    <main>
-      <!-- <div class="test">
-        <% @products.each do |p| %>
-          <%= p.name %>
-        <%end%>
-      </div> -->
-      <div class="row-container">
-        <%= yield %>
-      </div>
-    </main>
-    <footer class="mdl-mega-footer">
-      <div class="mdl-mega-footer__middle-section footer">
+    </div>
+  <% end %>
 
+  <div class="row-cart">
+    <div class="container-cart mdl-layout__header-row">
+      <div class="social mdl-layout-title">
+      <!--<p>f    .    t</p>-->
       </div>
-    </footer>
+      <div class="mdl-layout-spacer"></div>
+      <% if customer_signed_in? %>
+        <p class="name-header">Hola  <%= current_customer.email %> </p>
+        <%= link_to destroy_customer_session_path, method: :delete do%>
+          <p class="current">Salir</p>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <p class="name-header">Hola <%= current_admin.email %> </p>
+        <%= link_to destroy_admin_session_path, method: :delete do%>
+          <p class="current">Salir</p>
+        <% end %>
+      <% else %>
+        <%=link_to "Entrar", new_customer_session_path, :class => "login mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
+      <% end %>
+      <%= link_to carrito_path, :class => "link-carrito" do%>
+        <div class="cart material-icons mdl-badge mdl-badge--overlap" data-badge="<%= @shopping_cart.products.size %>">shopping_cart</div>
+      <% end %>
+
+    </div>
   </div>
+  <% if current_page?(root_path) %>
+    <div class="hero">
+      <header>
+        <div class="container-header">
+          <!-- Title -->
+          <span class="mdl-layout-title brand-header">
+            <%= link_to root_path do %>
+            <%= image_tag("logo.png", :class => "logo") %>
+            <% end %>
+          </span>
+          <nav class="mdl-navigation">
+            <span class="underline-style">
+              <%= link_to "¿Qué hacemos?", home_whatwedo_path %>
+            </span>
+            <span class="underline-style">
+              <%= link_to "Artistas", home_artists_path%>
+            </span>
+            <span class="underline-style">
+              <%= link_to "Productos", home_products_path %>
+            </span>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-grid call-to-in-header">
+        <div class="call-to-real-action">
+          <h2 class="mdl-cell--12-col">Un texto hermoso</h2>
+          <h2 class="mdl-cell--12-col">Para un gran impacto</h2>
+          <div class="click-me">
+            <a class="button-click-me" href="#">descubre como</a>
+          </div>
+        </div>
+        <i class="material-icons">expand_more</i>
+      </div>
+    </div>
+  <% else %>
+    <header>
+      <div class="container-header">
+        <!-- Title -->
+        <span class="mdl-layout-title brand-header">
+          <%= link_to root_path do %>
+            <%= image_tag("logo.png", :class => "logo") %>
+          <% end %>
+        </span>
+        <nav class="mdl-navigation">
+          <span class="underline-style">
+            <%= link_to "¿Qué hacemos?", root_path %>
+          </span>
+          <span class="underline-style">
+            <%= link_to "Artistas", home_artists_path%>
+          </span>
+          <span class="underline-style">
+            <%= link_to "Productos", home_products_path %>
+          </span>
+        </nav>
+      </div>
+    </header>
+  <% end %>
+  <main>
+    <!-- <div class="test">
+      <% @products.each do |p| %>
+        <%= p.name %>
+      <%end%>
+    </div> -->
+    <div class="row-container relative">
+      <%= yield %>
+    </div>
+  </main>
+  <footer class="mdl-mega-footer">
+    <div class="mdl-mega-footer__middle-section footer">
+
+    </div>
+  </footer>
 </body>
 </html>
