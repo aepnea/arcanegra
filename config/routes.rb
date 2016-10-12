@@ -23,7 +23,10 @@ Rails.application.routes.draw do
 #  get 'home/product_sheet'
 
 
-  match 'home/product_sheet/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
+  #match 'home/product_sheet/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
+
+  match ':artist_id/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
+
 
 
 

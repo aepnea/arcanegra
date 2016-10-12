@@ -44,7 +44,7 @@
 
   <!-- agrego el link_to al div de producto -->
 
-  <%= link_to product_sheet_path(:product_id => p.id) do%>
+  <%= link_to product_sheet_path(:artist_id => p.artist_id, :product_id => p.id) do%>
     <div class="mdl-cell mdl-cell--3-col product-home" itemscope itemtype="http://schema.org/Product">
       <p class="short-description-home"><%= p.short_description %></p>
       <% p.images.limit(1).each do |img| %>
