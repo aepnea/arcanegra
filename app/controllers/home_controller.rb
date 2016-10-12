@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     @artist_random = Artist.order("RAND()").uniq.first(1)
 	  @product_random = Product.order("RAND()").first(4)
-  
+
 
 ### guardando customer id en una cookie
 #   if customer_signed_in?
@@ -32,7 +32,9 @@ class HomeController < ApplicationController
   end
 
   def product_sheet
-    @product_id = Product.find(params[:product_id])
+
+
+    @product_id = Product.friendly.find(params[:product_id])
     ### trayendo nombre de artista
       @artist_name = Artist.where(id: @product_id.artist_id)
 

@@ -19,10 +19,38 @@ Rails.application.routes.draw do
   get 'home/products'
 
   get 'home/whatwedo'
-  get 'home/product_sheet'
+
+#  get 'home/product_sheet'
+
+
+  match 'home/product_sheet/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
 
 
 
+
+  #get "home/product_sheet"
+  #Home
+  #<%= link_to home_product_sheet_path(:product_id => p.id)  do %>
+  #product_sheet view
+  #<%= link_to home_product_sheet_path(:product_id => p.id)  do %>
+  #get "/product_sheet/:product_id", to: "home#product_sheet"
+  #<%= link_to product_sheet_path(:product_id => p.id) do%>
+  #<%= link_to product_sheet_path(:product_id => p.id)  do %>
+
+  #get '/:artist_id/:product_id/', to:  "home#product_sheet"
+#resources :home
+
+  ### prueba friendly_id
+  match 'home' => 'home#index', :as => :home, via: [:get, :post]
+
+  #resources :home do
+  #  member do
+  #    get :product_sheet
+  #  end
+  #end
+  #match ':controller(/:action(/:id))(.:format)', via: [:get, :post]
+
+### prueba friendly_id fin
 
 
 #### SCOPE ADMIN
