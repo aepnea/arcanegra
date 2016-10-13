@@ -17,6 +17,10 @@ class HomeController < ApplicationController
   	@artist = Artist.all
   end
 
+  def artist_sheet
+    @artist_id = Artist.friendly.find(params[:artist_id])
+  end
+
   def products
     @tazas = Product.where(product_type: '1')
     @tazasplatillo = Product.where(product_type: '2')
@@ -36,10 +40,10 @@ class HomeController < ApplicationController
 
     @product_id = Product.friendly.find(params[:product_id])
     ### trayendo nombre de artista
-      @artist_name = Artist.where(id: @product_id.artist_id)
+      @artist_name = Artist.friendly.where(id: @product_id.artist_id)
 
     ### trayendo productos del mismo artista
-    @product_random = Product.where(artist_id: @product_id.artist_id).order("RAND()").first(4)
+    @product_random = Product.friendly.where(artist_id: @product_id.artist_id).order("RAND()").first(4)
 
     ### trayendo atributos de product_type
       p=@product_id.product_type_id

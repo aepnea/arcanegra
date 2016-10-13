@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003040440) do
+ActiveRecord::Schema.define(version: 20161012160250) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
@@ -92,9 +92,11 @@ ActiveRecord::Schema.define(version: 20161003040440) do
     t.integer  "background_file_size",    limit: 4
     t.datetime "background_updated_at"
     t.string   "nickname",                limit: 255
+    t.string   "slug",                    limit: 255
   end
 
   add_index "artists", ["city_id"], name: "index_artists_on_city_id", using: :btree
+  add_index "artists", ["slug"], name: "index_artists_on_slug", using: :btree
   add_index "artists", ["state_id"], name: "index_artists_on_state_id", using: :btree
 
   create_table "cart_product_groups", force: :cascade do |t|
@@ -254,7 +256,10 @@ ActiveRecord::Schema.define(version: 20161003040440) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "slug",       limit: 255
   end
+
+  add_index "product_types", ["slug"], name: "index_product_types_on_slug", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.integer  "product_type_id",   limit: 4

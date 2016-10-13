@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   match ':artist_id/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
 
+  match ':artist_id' => 'home#artist_sheet', :as => :artist_sheet, via: [:get]
 
 
 

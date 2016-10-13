@@ -1,2 +1,11 @@
-<h1>Home#artists</h1>
-<p>Find me in app/views/home/artists.html.erb</p>
+<h1>Artistas</h1>
+<p>Frase Pulenta</p>
+
+
+<%@artist.each do |a| %>
+<%= link_to artist_sheet_path(:artist_id => a.id) do %>
+<p><%=a.nickname%>
+<p><%=a.short_description%></p>
+<%end%>
+
+<%end%>
