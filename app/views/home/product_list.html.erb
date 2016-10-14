@@ -1,0 +1,6 @@
+
+<h1><%= @category_name.name%></h1>
+<%@product_list.each do |p| %>
+   <p><%=p.name%>
+   <p><%=p.short_description%></p>
+<%end%>

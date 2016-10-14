@@ -21,18 +21,13 @@ class HomeController < ApplicationController
     @artist_id = Artist.friendly.find(params[:artist_id])
   end
 
-  def products
-    @tazas = Product.where(product_type: '1')
-    @tazasplatillo = Product.where(product_type: '2')
-    @plato = Product.where(product_type: '3')
-    @carcazacelular = Product.where(product_type: '4')
-    @carcazatablet = Product.where(product_type: '5')
-    @cortinabano = Product.where(product_type: '6')
-    @lienzo = Product.where(product_type: '7')
-    @polera = Product.where(product_type: '8')
-    @poleron = Product.where(product_type: '9')
-    @almohada = Product.where(product_type: '10')
+  def product_type
     @product_types = ProductType.all
+  end
+
+  def product_list
+    @product_list = Product.friendly.where(product_type_id: params[:product_type_id])
+    @category_name = ProductType.select(:name).find(params[:product_type_id])
   end
 
   def product_sheet
