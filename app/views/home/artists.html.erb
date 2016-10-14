@@ -2,7 +2,7 @@
 
 
 <%@artist.each do |a| %>
-  <%= link_to artist_sheet_path(:artist_id => a.friendly_id) do %>
+  <%= link_to artist_sheet_path(:artist_id => a.id) do %>
     <p><%=a.nickname%>
     <p><%=a.short_description%></p>
     <%end%>
