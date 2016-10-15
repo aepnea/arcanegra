@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(version: 20161012160250) do
 
   add_index "products", ["artist_id"], name: "index_products_on_artist_id", using: :btree
   add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
+  add_index "products", ["slug"], name: "index_products_on_slug", using: :btree
 
   create_table "state_carts", force: :cascade do |t|
     t.string   "state",      limit: 255

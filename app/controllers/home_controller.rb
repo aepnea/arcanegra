@@ -19,6 +19,8 @@ class HomeController < ApplicationController
 
   def artist_sheet
     @artist_id = Artist.friendly.find(params[:artist_id])
+    @artist_products = Product.where(artist_id: params[:artist_id])
+
   end
 
   def product_type
