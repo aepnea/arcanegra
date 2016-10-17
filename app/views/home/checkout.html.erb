@@ -1,0 +1,65 @@
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--- aca escondo el id de cliente  -->
+
+  <% if customer_signed_in?%>
+
+      <div class="field">
+<!--- aca escondo el id de cliente  -->
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      </div>
+      <div class="field">
+        <%= f.label "Dirección" %><br>
+        <%= f.text_field :address %>
+      </div>
+      <div class="field">
+        <%= f.label "Ciudad" %><br>
+        <%= f.text_field :city_id %>
+      </div>
+      <div class="field">
+        <%= f.label "Región" %><br>
+        <%= f.text_field :state_id %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+
+  <%else%>
+    <div class="field">
+      <%= f.label "Dirección" %><br>
+      <%= f.text_field :address, :readonly => true %>
+    </div>
+    <div class="field">
+      <%= f.label "Ciudad" %><br>
+      <%= f.text_field :city_id, :readonly => true %>
+    </div>
+    <div class="field">
+      <%= f.label "Región" %><br>
+      <%= f.text_field :state_id, :readonly => true %>
+    </div>
+  <%end%>
+<% end %>
+
+
+<% if customer_signed_in?%>
+  <% cart_id = cookies[:cart_id]%>
+  <%= Kmflow::Pagos::nuevo orden: cart_id , concepto: 'Mi producto', monto: @shopping_cart.total , email: @user %>
+      </p>
+<%else%>
+  <h2 class="title-medium mdl-cell--8-col">necesitas logearte para seguir con la compra</h2>
+  <p><%= link_to "Registrarse", new_customer_registration_path, method: :get %>
+     <%= link_to "Login", customer_session_path, method: :post %>
+      </p>
+<%end%>

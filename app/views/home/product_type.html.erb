@@ -1,0 +1,10 @@
+<h1>Categorias</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+  <% @product_types.each do |product_type| %>
+    <%= link_to product_list_path(:product_type_id => product_type.id) do%>
+      <p> <%= product_type.name %></p>
+    <%end%>
+  <% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @artist_id.nickname%></p>
+
+
+<p><%= @artist_id.short_description%></p>
+
+<p><%= @artist_id.description%></p>
+
+
+<h3> Productos de <%=@artist_id.nickname%></h3>
+
+<!-- productos de artista -->
+<%   @artist_products.each do |p|%>
+<!-- agrego el link_to al div de producto -->
+
+<%= link_to product_sheet_path(:artist_id => @artist_id.friendly_id, :product_id => p.friendly_id) do%>
+  <div class="mdl-cell mdl-cell--3-col product-home" itemscope itemtype="http://schema.org/Product">
+    <p class="short-description-home"><%= p.short_description %></p>
+    <% p.images.limit(1).each do |img| %>
+      <%= image_tag img.archivo.url, itemprop: "image" %>
+    <% end %>
+    <h3 itemprop="name"><%= p.name %></h3>
+    <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <span itemprop="price"><%= p.price %></span>
+    </div>
+
+    <div class="mdl-card__actions add-to-cart-row">
+      <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"%>
+    </div>
+  </div>
+<% end %>
+
+</div>
+<!-- hasta aca -->
+<% end %>
+
+  <%= link_to 'Volver', artistas_path %>
+</p>

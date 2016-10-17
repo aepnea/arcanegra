@@ -53,6 +53,7 @@ Artist.create ([{nickname: 'nickartista3', firstname: 'artista3', lastname:'arti
 ###
 Product.create ([{product_type_id: '1', artist_id: '1', name: 'producto1', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '99000', sku: 'FEKPDBIL'}, \
 				 {product_type_id: '2', artist_id: '2', name: 'producto2', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'KMLYVJPD'}, \
+				 {product_type_id: '2', artist_id: '2', name: 'producto10', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'DKJJFDSF'}, \
 				 {product_type_id: '3', artist_id: '3', name: 'producto3', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'RBDPSQJH'}, \
 				 {product_type_id: '4', artist_id: '1', name: 'producto4', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'QHNLJKCL'}, \
 				 {product_type_id: '5', artist_id: '2', name: 'producto5', short_description: 'descripcion corta', description: 'descripcion larga', on_sale: 'true', price: '9900', sku: 'PSIEAHNC'}, \

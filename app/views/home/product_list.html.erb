@@ -1,0 +1,11 @@
+
+<h1><%= @category_name.name%></h1>
+<%@product_list.each do |p| %>
+<%= link_to product_sheet_path(:artist_id => p.artist_id, :product_id => p.friendly_id) do%>
+
+   <p><%=p.name%>
+   <p><%=p.short_description%></p>
+   <%end%>
+   
+<%end%>
+ <p><%= link_to 'Volver', categorias_path %> </p>
