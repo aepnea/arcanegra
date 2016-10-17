@@ -1,4 +1,11 @@
 
+<% if customer_signed_in?%>
+  <% cart_id = cookies[:cart_id]%>
+  <%= Kmflow::Pagos::nuevo orden: cart_id , concepto: 'Mi producto', monto: @shopping_cart.total , email: @user %>
+      </p>
+<%else%>
+  <h2 class="title-medium mdl-cell--8-col">necesitas logearte para seguir con la compra</h2>
   <p><%= link_to "Registrarse", new_customer_registration_path, method: :get %>
      <%= link_to "Login", customer_session_path, method: :post %>
       </p>
+<%end%>
