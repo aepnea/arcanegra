@@ -39,9 +39,21 @@ class HomeController < ApplicationController
   end
 
   def checkout
-    @address = Address.new
+    def new
+      @address = Address.new
+      raise @address
+    end
+
+    def create
+        @address = Address.new(address_params)
+        if @address.save
+          redirect_to checkout_path
+        end
+    end
+
 
   end
+
 
   def whatwedo
   end
