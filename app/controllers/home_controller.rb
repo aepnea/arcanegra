@@ -4,22 +4,15 @@ class HomeController < ApplicationController
   def index
     @artist_random = Artist.order("RAND()").uniq.first(1)
 	  @product_random = Product.order("RAND()").first(4)
-
-
-### guardando customer id en una cookie
-#   if customer_signed_in?
-#      @user_id = current_customer.id
-#      cookies[:user_id] = @user_id
-#    end
-
   end
+
   def artists
   	@artist = Artist.all
   end
 
   def artist_sheet
     @artist_id = Artist.friendly.find(params[:artist_id])
-    @artist_products = Product.where(artist_id: params[:artist_id])
+    @artist_products = Product.friendly.where(artist_id: params[:id])
 
   end
 
@@ -33,20 +26,23 @@ class HomeController < ApplicationController
   end
 
   def product_sheet
-
-
     @product_id = Product.friendly.find(params[:product_id])
     ### trayendo nombre de artista
-      @artist_name = Artist.friendly.where(id: @product_id.artist_id)
+    @artist_name = Artist.friendly.where(id: @product_id.artist_id)
 
     ### trayendo productos del mismo artista
     @product_random = Product.friendly.where(artist_id: @product_id.artist_id).order("RAND()").first(4)
 
     ### trayendo atributos de product_type
-      p=@product_id.product_type_id
-      @product_attribute = ProductAttribute.where(product_type: p)
+    p=@product_id.product_type_id
+    @product_attribute = ProductAttribute.where(product_type: p)
+  end
+
+  def checkout
+    
   end
 
   def whatwedo
   end
+
 end

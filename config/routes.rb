@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   get "/categorias", to: 'home#product_type'
 
-
   get "/que-hacemos", to: 'home#whatwedo'
 
+  get "/checkout", to: 'home#checkout'
 
 ### Lista de productos despues de categorias_path
 match '/categorias/:product_type_id' => 'home#product_list', :as => :product_list, via: [:get]
@@ -32,7 +32,7 @@ match '/categorias/:product_type_id' => 'home#product_list', :as => :product_lis
 
 
 ##### Ficha de artista
-  match ':artist_id' => 'home#artist_sheet', :as => :artist_sheet, via: [:get]
+  match ':artist_id/' => 'home#artist_sheet', :as => :artist_sheet, via: [:get]
 
 
 
