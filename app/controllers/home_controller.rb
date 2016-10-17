@@ -39,7 +39,8 @@ class HomeController < ApplicationController
   end
 
   def checkout
-    
+    @address = Address.new
+
   end
 
   def whatwedo
