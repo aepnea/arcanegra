@@ -21,18 +21,19 @@ Rails.application.routes.draw do
 
   get "/que-hacemos", to: 'home#whatwedo'
 
-  get "/checkout", to: 'home#checkout'
+  #get "/checkout", to: 'checkout#index'
+  resources :checkout
 
 ### Lista de productos despues de categorias_path
 match '/categorias/:product_type_id' => 'home#product_list', :as => :product_list, via: [:get]
 
 
 ### Ficha de Producto
-  match ':artist_id/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
+  match '/productos/:product_id' => 'home#product_sheet', :as => :product_sheet, via: [:get]
 
 
 ##### Ficha de artista
-  match ':artist_id/' => 'home#artist_sheet', :as => :artist_sheet, via: [:get]
+  match '/artistas/:artist_id' => 'home#artist_sheet', :as => :artist_sheet, via: [:get]
 
 
 
@@ -66,7 +67,7 @@ match '/categorias/:product_type_id' => 'home#product_list', :as => :product_lis
 
   devise_for :admin
   devise_scope :admin do
-    get '/administrators' => 'devise/sessions#new'
+    get '/panel/administrators' => 'devise/sessions#new'
   end
   authenticated :admin do
     root :to => "artists#index", as: :admins

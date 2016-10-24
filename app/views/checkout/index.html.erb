@@ -1,0 +1,64 @@
+<% if customer_signed_in?%>
+    <%= form_for @address, :url=>checkout_index_path(@address) do |f| %>
+      <% if @address.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+          <ul>
+          <% @address.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% if @address.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+          <ul>
+          <% @address.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+<p> Escoger direccion de despacho </p>
+    <div>
+        <%= f.collection_select :city_id, @addresses, :id, :name%>
+
+    </div>
+
+<p> Despachar a otra dirección </p>
+    <div class="field">
+<!--- aca escondo el id de cliente  -->
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    </div>
+    <div class="field">
+      <%= f.label "Dirección" %><br>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label "Ciudad" %><br>
+      <%= f.text_field :city_id %>
+    </div>
+    <div class="field">
+      <%= f.label "Región" %><br>
+      <%= f.text_field :state_id %>
+    </div>
+    <div class="field">
+      <%= f.label "Nombre de direccion" %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+<%end%>
+<%else%>
+<% logger.info cookies[:cart_id]%>
+<h2 class="title-medium mdl-cell--8-col">necesitas logearte para seguir con la compra</h2>
+<p><%= link_to "Registrarse", new_customer_registration_path, method: :get %>
+   <%= link_to "Login", customer_session_path, method: :post %>
+    </p>
+<%end%>

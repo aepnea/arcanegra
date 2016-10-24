@@ -25,7 +25,11 @@ class Customer < ActiveRecord::Base
   has_many :addresses
   has_many :carts
   has_many :orders
-  
+
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :rut, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
