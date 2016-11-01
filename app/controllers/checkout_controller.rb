@@ -10,8 +10,19 @@ class CheckoutController < ApplicationController
 
     if customer_signed_in?
       @addresses = Address.where(customer_id:  current_customer.id)
+      @states = State.all
+      @cities = City.all
+
+      #obteniendo precio para sumarlo en la vista y enviarlo a flow
+
+      p_id = CartProduct.select(:product_id).where(cart_id: cookies[:cart_id])
+      @products_price = Product.select(:price).where(id: p_id)
     end
+    #para generar la direccion nueva
     @address = Address.new
+
+    #para generar la orden
+    @order = Order.new
 
   end
 
@@ -37,8 +48,9 @@ class CheckoutController < ApplicationController
       if @address.save
         redirect_to checkout_index_path, notice: 'Address was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
+        redirect_to checkout_index_path, notice: 'Algo ocurrio mal'
+        #format.html { render :new }
+        #format.json { render json: @address.errors, status: :unprocessable_entity }
       end
   end
 
@@ -72,7 +84,7 @@ class CheckoutController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
 
-      params.require(:address).permit(:customer_id, :city_id, :state_id, :address)
+      params.require(:address).permit(:customer_id, :city_id, :state_id, :address, :name)
     end
 
 end
