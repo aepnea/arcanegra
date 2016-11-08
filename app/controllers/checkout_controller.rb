@@ -24,6 +24,7 @@ class CheckoutController < ApplicationController
     #para generar la orden
     @order = Order.new
 
+
   end
 
   # GET /addresses/1
