@@ -2,6 +2,8 @@
 
 
 <%@artist.each do |a| %>
+<%logger.info "a.friendly_id en artists.html.erb: #{a.friendly_id}"%>
+<%logger.info "a.friendly_id en artists.html.erb: #{a.id}"%>
   <%= link_to artist_sheet_path(:artist_id => a.friendly_id, :id => a.id) do %>
     <p><%=a.nickname%>
     <p><%=a.short_description%></p>
