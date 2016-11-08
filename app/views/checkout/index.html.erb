@@ -65,6 +65,10 @@
 
 
 <%end%>
+<p> Escoge método de pago </p>
+<% cart_id = cookies[:cart_id]%>
+<%= Kmflow::Pagos::nuevo orden: cart_id , concepto: 'Mi producto', monto: @products_price.sum(:price) , email: @user %>
+
 <%else%>
 <% logger.info cookies[:cart_id]%>
 <h2 class="title-medium mdl-cell--8-col">necesitas logearte para seguir con la compra</h2>
@@ -72,6 +76,3 @@
    <%= link_to "Login", customer_session_path, method: :post %>
     </p>
 <%end%>
-<p> Escoge método de pago </p>
-<% cart_id = cookies[:cart_id]%>
-<%= Kmflow::Pagos::nuevo orden: cart_id , concepto: 'Mi producto', monto: @products_price.sum(:price) , email: @user %>
