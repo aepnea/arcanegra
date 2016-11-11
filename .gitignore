@@ -11,6 +11,7 @@ tmp/*
 
 log/development.log
 config/database.yml
+public/images
 
 log/kmflow.log
 
