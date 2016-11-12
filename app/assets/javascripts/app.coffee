@@ -14,3 +14,13 @@ $(document).on "turbolinks:load turbolinks:fetch ready", ()->
       console.log('clock')
       $(window).on "click", ->
         $('.short-description-home').removeClass('activo')
+
+
+  backhead = $('.background-header').height()
+  $(window).scroll ()->
+    wScroll = $(this).scrollTop();
+
+    pixels= -wScroll/2 + "px"
+
+    if (wScroll <= backhead)
+      $('.background-header').css("background-position", "0 " + pixels)
