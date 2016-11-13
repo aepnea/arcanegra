@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Arcanegra</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -74,12 +76,36 @@
         </div>
       </div>
     </header>
+    <% if current_page?(root_path) %>
+      <div class="content-header">
+        <div class="story">
+          <h3>Se avecina el final. El planeta se romperá desde el cielo a la tierra. Construimos una nave para sobrevivir. Construimos un arca.</h3>
+          <p>noah time traveler</p>
+        </div>
+        <div class="market-call">
+          <h3>El arte como jamas lo “viste”</h3>
+          <span>Piezas de artistas unicas en atuendos increibles</span>
+        </div>
+        <div class="invitation">
+          <h3>¿¿eres artista??</h3>
+          <button>construyamos juntos</button>
+        </div>
+      </div>
+    <%end%>
+    <% if current_page?(root_path) %>
+      <div class="hills">
+        <div class="hill-right">
+          <%= image_tag("hill-r.png", :class => "hill-r") %>
+        </div>
+        <div class="hill-left">
+           <%= image_tag("hill-l.png", :class => "hill-l") %>
+        </div>
+      </div>
+    <% end %>
   <% if current_page?(root_path) %></div><%end%>
 
   <main>
-    <div class="row-container relative">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </main>
   <footer class="mdl-mega-footer">
     <div class="mdl-mega-footer__middle-section footer">

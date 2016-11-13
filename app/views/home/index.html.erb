@@ -1,75 +1,32 @@
-<h2 class="title mdl-cell--8-col">Que hacemos</h2>
-<div class="mdl-grid what-we-do">
-  <div class="mdl-cell mdl-cell--4-col">
-    <figure class="steps">
-      <img src="/assets/no-cont.png" alt="sin contenido aun" />
-      <figcaption>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </figcaption>
-    </figure>
-  </div>
-  <div class="mdl-cell mdl-cell--4-col">
-    <figure class="steps">
-      <img src="/assets/no-cont.png" alt="sin contenido aun" />
-      <figcaption>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </figcaption>
-    </figure>
-  </div>
-  <div class="mdl-cell mdl-cell--4-col">
-    <figure class="steps">
-      <img src="/assets/no-cont.png" alt="sin contenido aun" />
-      <figcaption>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </figcaption>
-    </figure>
-  </div>
-</div>
+<div class="background-oscuro">
+  <div class="categorias-row row-container relative">
+    <h2 class="categorias-titulo titulo-global">Categorias</h2>
 
-<h2 class="title mdl-cell--8-col">Como lo hacemos</h2>
-<div class="mdl-grid what-we-do how-we-do">
-  <div class="mdl-cell mdl-cell--8-col">
-    <figure class="steps">
-      <img src="/assets/no-cont.png" alt="sin contenido aun" />
-      <figcaption>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </figcaption>
-    </figure>
-  </div>
-</div>
-
-<div class="mdl-grid big-margin-bottom">
-  <% @product_random.each do |p|%>
-
-  <!-- agrego el link_to al div de producto -->
-
-  <%= link_to product_sheet_path(:artist_id => p.artist_id, :product_id => p.friendly_id) do%>
-    <div class="mdl-cell mdl-cell--3-col product-home" itemscope itemtype="http://schema.org/Product">
-      <p class="short-description-home"><%= p.short_description %></p>
-      <% p.images.limit(1).each do |img| %>
-        <%= image_tag img.archivo.url, itemprop: "image" %>
-      <% end %>
-      <h3 itemprop="name"><%= p.name %></h3>
-      <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-        <span itemprop="price"><%= p.price %></span>
-      </div>
-
-      <div class="mdl-card__actions add-to-cart-row">
-        <%= link_to "Agregar al carrito", {:controller => "in_shopping_carts", :action => "create", :product_id => p.id }, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"%>
-      </div>
+    <div class="categorias">
+      <ul class="mdl-grid">
+        <li class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet" id="categories-row-1">
+          <div class="mdl-cell mdl-cell--12-col categoria-item">1</div>
+          <div class="mdl-cell mdl-cell--12-col categoria-item">2</div>
+        </li>
+        <li class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet" id="categories-row-2">
+          <div class="mdl-cell mdl-cell--12-col categoria-item">1</div>
+        </li>
+        <li class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet" id="categories-row-3">
+          <div class="mdl-cell mdl-cell--12-col categoria-item">1</div>
+          <div class="mdl-cell mdl-cell--12-col categoria-item">2</div>
+        </li>
+      </ul>
     </div>
-  <% end %>
-
+  </div>
 </div>
-<!-- hasta aca -->
-  <% end %>
 
-<h2 class="title mdl-cell--8-col">Alguien debia hacerlo, y lo hacemos con gusto</h2>
-<div class="mdl-grid what-we-do">
-  <div class="mdl-cell mdl-cell--8-col">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+<div class="row-container relative">
+  <h2 class="titulo-global mdl-cell--8-col">Alguien debia hacerlo, y lo hacemos con gusto</h2>
+  <div class="mdl-grid what-we-do">
+    <div class="mdl-cell mdl-cell--8-col">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </div>
   </div>
 </div>

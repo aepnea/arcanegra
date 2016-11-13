@@ -19,6 +19,7 @@
   src: url('/assets/nexa-book.woff2') format('woff2'),url('/assets/nexa-book.woff') format('woff'),url('/assets/nexa-book.svg#nexa_rust_sansbook') format('svg')
 
 // variables de color
+$clarito: #808285
 $celeston: #0F729C
 $lila: #A50450
 $principal: #28292E
@@ -49,7 +50,8 @@ header
   box-shadow: 0 3px 6px rgba(black, .16)
   height: 155px
   padding: 10px 0
-  z-index: 1
+  position: relative
+  z-index: 3
   .mdl-layout__header-row
     height: initial
   .logo
@@ -145,17 +147,93 @@ header
     &:hover
       background: $celeston
 .background-header
-  background-attachment: fixed
+  //background-attachment: fixed
   background-image: url('/assets/head-background.png')
-  background-position: 0 0
+  background-position: 0 -100px
   background-repeat: no-repeat
-  background-size: 100%
-  height: 500px
-.background-cover
-  background-size: cover !important
-  background-position: center !important
-  background-repeat: no-repeat
-  height: 200px
+  background-size: cover
+  height: 90vh
+  overflow: hidden
+  position: relative
+  .content-header
+    left: 50%
+    max-width: 700px
+    position: absolute
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    z-index: 1
+    .invitation
+      text-align: center
+      button
+        background: $oscuro url('/assets/textures.png')
+        background-size: cover
+        border: 0
+        color: white
+        font-family: 'nexa-black'
+        font-size: 16px
+        margin: 0 auto
+        padding: 10px 20px
+      h3
+        color: $oscuro
+        display: block
+        font-family: 'Open Sans', sans-serif
+        font-size: 14px
+        font-style: italic
+        text-align: center
+    .market-call
+      margin: 16px auto
+      h3
+        color: $oscuro 
+        font-family: 'nexa-black'
+        font-size: 20px
+        line-height: 22px
+        margin: 0
+        text-align: center
+      span
+        color: $oscuro
+        display: block
+        font-family: 'Open Sans', sans-serif
+        font-size: 14px
+        font-style: italic
+        text-align: center
+    .story
+      h3
+        color: $clarito 
+        font-family: 'nexa-black'
+        font-size: 20px
+        line-height: 22px
+        margin: 0
+        text-align: center
+      p
+        color: $oscuro
+        font-family: 'nexa'
+        font-size: 14px
+        text-align: center
+  .hills
+    background-image: url('/assets/valle.png')
+    background-position: 0 100%
+    background-repeat: no-repeat
+    background-size: 100%
+    bottom: 0
+    height: 100%
+    left: 0
+    position: absolute
+    width: 100%
+    .hill-left
+      left: 0
+    .hill-left,
+    .hill-right
+      bottom: 0
+      position: absolute
+      width: 100%
+      z-index: 1
+      img
+        width: 100%
+    .hill-right
+      right: 0
+.background-oscuro
+  background: $oscuro
 .big-margin-bottom
   margin-bottom: 85px
 .call-to-in-header
@@ -183,6 +261,40 @@ header
     transform: translateX(-50%)
   .call-to-real-action
     width: 100%
+.categorias-row
+  .categorias-titulo
+    color: white
+    font-size: 20px
+  .categorias
+    display: flex
+    height: 410px
+    width: 100%
+    ul
+      list-style-type: none
+      margin: 0
+      padding: 0
+      width: 100%
+      li
+        background: peru
+        .categoria-item
+          margin: 0
+          width: 100%
+      #categories-row-1
+        .categoria-item
+          &:nth-child(1)
+            height: 50%
+          &:nth-child(2)
+            height: 50%
+      #categories-row-2
+        .categoria-item
+          &:nth-child(1)
+            height: 100%
+      #categories-row-3
+        .categoria-item
+          &:nth-child(1)
+            height: 25%
+          &:nth-child(2)
+            height: 75%
 .click-me
   display: block
   margin-top: 8px
@@ -356,7 +468,7 @@ header
     tr
       td
         text-align: center
-.title
+.titulo-global
   font-family: "nexa-black"
   font-size: 35px
   margin: 0 auto 35px auto
@@ -388,5 +500,8 @@ header
 
 // responsive
 @media screen and (max-width: 1024px)
+  .mdl-layout__header
+    display: flex
   .mdl-layout__drawer-button
     color: white
+

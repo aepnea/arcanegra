@@ -1,26 +1,30 @@
 $(document).on "turbolinks:load turbolinks:fetch ready", ()->
   componentHandler.upgradeDom()
-  console.log('hola')
+  console.log('cambie')
 
-  $('.product-home').on 'click', (e)->
-    e.stopPropagation();
-  $('.product-home').each (i)->
-    i++
-    $(this).attr('id','click'+i)
-    $(this).on 'click', ->
-      console.log('clock 1')
-      $('.short-description-home').removeClass('activo')
-      $(this).find('.short-description-home').addClass('activo')
-      console.log('clock')
-      $(window).on "click", ->
-        $('.short-description-home').removeClass('activo')
+  # $('.product-home').on 'click', (e)->
+  #   e.stopPropagation();
+  # $('.product-home').each (i)->
+  #   i++
+  #   $(this).attr('id','click'+i)
+  #   $(this).on 'click', ->
+  #     console.log('clock 1')
+  #     $('.short-description-home').removeClass('activo')
+  #     $(this).find('.short-description-home').addClass('activo')
+  #     console.log('clock')
+  #     $(window).on "click", ->
+  #       $('.short-description-home').removeClass('activo')
 
 
   backhead = $('.background-header').height()
   $(window).scroll ()->
     wScroll = $(this).scrollTop();
 
-    pixels= -wScroll/2 + "px"
+    pixels= -100 + (-wScroll)
+    pixels2= 100 - (-wScroll/2)
+    percent= -50 - (-wScroll/2)
 
     if (wScroll <= backhead)
-      $('.background-header').css("background-position", "0 " + pixels)
+      $('.background-header').css("background-position", "0 " + pixels + "px")
+      $('.hills').css("background-position", "0 " + pixels2 + "%")
+      $('.content-header').css('transform', 'translate(-50%, '+ percent + '%)')
