@@ -24,6 +24,7 @@ $celeston: #0F729C
 $lila: #A50450
 $principal: #28292E
 $oscuro: #23242A
+$oscuroPrincipal: #2e122c
 
 *
   box-sizing: border-box
@@ -199,7 +200,7 @@ header
         text-align: center
     .story
       h3
-        color: $clarito 
+        color: #c8293d 
         font-family: 'nexa-black'
         font-size: 20px
         line-height: 22px
@@ -220,20 +221,59 @@ header
     left: 0
     position: absolute
     width: 100%
-    .hill-left
-      left: 0
-    .hill-left,
-    .hill-right
-      bottom: 0
+    .hill-container
+      bottom: -2px
       position: absolute
       width: 100%
       z-index: 1
-      img
+      .hill
         width: 100%
-    .hill-right
-      right: 0
+    .naves
+      //background: rgba(pink, .3)
+      height: 100%
+      left: 50%
+      max-width: 1010px
+      position: absolute
+      transform: translate(-50%)
+      width: 100%
+      .nave
+        position: absolute
+        .nave-svg
+          position: relative
+          .racho
+            position: absolute
+      .nave1
+        left: 0
+        top: 30%
+        width: 60px
+        .nave-svg
+          .racho
+            animation: rachoLaser-uno 4s linear infinite
+            background: radial-gradient(ellipse at center, rgba(141,198,63,1) 0%,rgba(141,198,63,0.5) 50%,rgba(57,181,74,0) 100%) !important
+            //border: 1px solid $oscuro
+            height: 800px
+            right: 18px
+            top: 30px
+            transform: rotate(-10deg)
+            transform-origin: 0 0
+            width: 5px
+      .nave2
+        right: 0
+        top: 30%
+        width: 60px
+        .nave-svg
+          .racho
+            animation: rachoLaser-dos 3s linear infinite
+            background: radial-gradient(ellipse at center, rgba(141,198,63,1) 0%,rgba(141,198,63,0.5) 50%,rgba(57,181,74,0) 100%) !important
+            //border: 1px solid $oscuro
+            height: 800px
+            left: 15px
+            top: 30px
+            transform: rotate(10deg)
+            transform-origin: 0 0
+            width: 5px
 .background-oscuro
-  background: $oscuro
+  background: $oscuroPrincipal
 .big-margin-bottom
   margin-bottom: 85px
 .call-to-in-header
@@ -262,6 +302,7 @@ header
   .call-to-real-action
     width: 100%
 .categorias-row
+  padding-bottom: 40px
   .categorias-titulo
     color: white
     font-size: 20px
@@ -279,12 +320,17 @@ header
         .categoria-item
           margin: 0
           width: 100%
+          .categories-int
+            background: pink
+            height: 100%
       #categories-row-1
         .categoria-item
           &:nth-child(1)
             height: 50%
+            padding: 0 0 8px 0
           &:nth-child(2)
             height: 50%
+            padding: 8px 0 0 0
       #categories-row-2
         .categoria-item
           &:nth-child(1)
@@ -292,9 +338,11 @@ header
       #categories-row-3
         .categoria-item
           &:nth-child(1)
-            height: 25%
+            height: 30%
+            padding: 0 0 8px 0
           &:nth-child(2)
-            height: 75%
+            height: 70%
+            padding: 8px 0 0 0
 .click-me
   display: block
   margin-top: 8px
@@ -342,6 +390,8 @@ header
 .inline-middle
   display: inline-block
   vertical-align: middle
+.no-padding
+  padding: 0
 .price
   display: block
   text-align: center
@@ -429,7 +479,7 @@ header
 .row-container
   margin: 0 auto
   max-width: 1010px
-  padding: 0
+  //padding: 0
   width: 100%
 .steps
   margin: 0
@@ -497,6 +547,30 @@ header
     transform: scale3d(1.05, 1.05, 1.05)
   to
     transform: scale3d(1, 1, 1)
+
+@keyframes rachoLaser-uno
+  0%
+    transform: rotate(-10deg)
+  30%
+    transform: rotate(-35geg)
+  50%
+    transform: rotate(-25deg)
+  70%
+    transform: rotate(-45deg)
+  100%
+    transform: rotate(-10deg)
+
+@keyframes rachoLaser-dos
+  0%
+    transform: rotate(10deg)
+  30%
+    transform: rotate(35geg)
+  50%
+    transform: rotate(25deg)
+  70%
+    transform: rotate(45deg)
+  100%
+    transform: rotate(10deg)
 
 // responsive
 @media screen and (max-width: 1024px)

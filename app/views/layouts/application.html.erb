@@ -25,7 +25,7 @@
   <% end %>
   <% if current_page?(root_path) %><div class="background-header"><%end%>
     <header class="mdl-layout__header mdl-layout__header--transparent">
-      <div class="mdl-layout__header-row row-container">
+      <div class="mdl-layout__header-row row-container no-padding">
         <%= link_to root_path do %>
           <div class="logo">
             <div class="logo-svg inline-middle">
@@ -94,11 +94,38 @@
     <%end%>
     <% if current_page?(root_path) %>
       <div class="hills">
-        <div class="hill-right">
-          <%= image_tag("hill-r.png", :class => "hill-r") %>
+        <div class="naves">
+          <div class="nave nave1">
+            <div class="nave-svg">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 59.21 32.94">
+                <defs><style>.nave1-color1{fill:#37202e;}.gradiente{fill:url(#radial-gradient);}</style>
+                <radialGradient id="radial-gradient" cx="37.99" cy="25.27" r="7.67" gradientUnits="userSpaceOnUse"><stop offset="0.47" stop-color="#8dc63f"/><stop offset="0.56" stop-color="#8dc63f" stop-opacity="0.87"/><stop offset="0.74" stop-color="#8dc63f" stop-opacity="0.52"/><stop offset="1" stop-color="#8dc63f" stop-opacity="0"/></radialGradient>
+                </defs><title>nave-1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_6" data-name="Layer 6"><path class="nave1-color1" d="M.67,3.54a64.41,64.41,0,0,1,19.58,1C22.46.82,27.74-1,33,.53s8.82,5.82,8.71,10.19a64.2,64.2,0,0,1,17.2,9.48.76.76,0,0,1-.12,1.26c-1,.54-16.44,1.85-31-2.34C13.83,15.12.69,5.64.11,4.69A.76.76,0,0,1,.67,3.54Z"/><circle class="gradiente" cx="37.99" cy="25.27" r="7.67"/></g></g>
+              </svg>
+              <div class="racho"></div>
+            </div>
+          </div>
+          <div class="nave nave2">
+            <div class="nave-svg">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48.55 31.84">
+                <defs><style>.nave2-color1{fill:#37202e;}.gradiente2{fill:url(#radial-gradient2);}</style>
+                <radialGradient id="radial-gradient2" cx="15.02" cy="24.17" r="7.67" gradientUnits="userSpaceOnUse"><stop offset="0.47" stop-color="#8dc63f"/><stop offset="0.56" stop-color="#8dc63f" stop-opacity="0.87"/><stop offset="0.74" stop-color="#8dc63f" stop-opacity="0.52"/><stop offset="1" stop-color="#8dc63f" stop-opacity="0"/></radialGradient>
+                </defs>
+                <title>nave-2</title>
+                <g id="Layer_2" data-name="Layer 2"> 
+                  <g id="Layer_6" data-name="Layer 6">
+                    <path class="nave2-color1" d="M48,2.91a52.8,52.8,0,0,0-16,.85C30.13.67,25.8-.8,21.47.44s-7.23,4.77-7.14,8.35A52.63,52.63,0,0,0,.23,16.57a.62.62,0,0,0,.1,1c.82.44,13.48,1.52,25.45-1.92C37.2,12.39,48,4.62,48.45,3.85A.62.62,0,0,0,48,2.91Z"/>
+                    <circle class="gradiente2" cx="15.03" cy="24.17" r="7.67"/>
+                  </g>
+                </g>
+              </svg>
+              <div class="racho"></div>
+            </div>
+          </div>
+          <div class="nave"></div>
         </div>
-        <div class="hill-left">
-           <%= image_tag("hill-l.png", :class => "hill-l") %>
+        <div class="hill-container">
+          <%= image_tag("hill.png", :class => "hill") %>
         </div>
       </div>
     <% end %>

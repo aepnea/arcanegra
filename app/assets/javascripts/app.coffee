@@ -21,8 +21,8 @@ $(document).on "turbolinks:load turbolinks:fetch ready", ()->
     wScroll = $(this).scrollTop();
 
     pixels= -100 + (-wScroll)
-    pixels2= 100 - (-wScroll/2)
-    percent= -50 - (-wScroll/2)
+    pixels2= 100 - (-wScroll/8)
+    percent= -50 - (-wScroll/8)
 
     if (wScroll <= backhead)
       $('.background-header').css("background-position", "0 " + pixels + "px")
